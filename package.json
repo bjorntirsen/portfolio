@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "transfer": "tsc transfer-data.ts --outDir dist && node dist/transfer-data.js"
+    "transfer": "tsc transfer-data.ts --outDir dist && node dist/transfer-data.js",
+    "add:images": "tsc add-images.ts --outDir dist && node dist/add-images.js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",
@@ -22,6 +23,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@supabase/supabase-js": "^2.47.2",
     "@types/node": "^22.10.1",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",

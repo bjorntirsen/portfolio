@@ -16,6 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { ExternalLink } from "lucide-react"
 
 interface IImage {
   id: string
@@ -34,6 +35,8 @@ interface ProjectWithCoverImage {
   created_at: string
   images: IImage[]
   coverImage?: IImage
+  repo?: string
+  live_url?: string
 }
 
 export function ProjectCard({ project }: { project: ProjectWithCoverImage }) {
@@ -62,10 +65,25 @@ export function ProjectCard({ project }: { project: ProjectWithCoverImage }) {
         </p>
         <p className="text-sm line-clamp-3">{project.description}</p>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline" asChild>
-          <a href={`/projects/${project.slug}`}>View Project</a>
-        </Button>
+      <CardFooter className="flex flex-wrap gap-2">
+        {project.repo && (
+          <Button variant="outline" asChild>
+            <a href={project.repo} target="_blank" rel="noopener noreferrer">
+              View Repo <ExternalLink />
+            </a>
+          </Button>
+        )}
+        {project.live_url && (
+          <Button variant="outline" asChild>
+            <a
+              href={project.live_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Site <ExternalLink />
+            </a>
+          </Button>
+        )}
         {project.lessons_learned && (
           <Dialog>
             <DialogTrigger asChild>

@@ -1,15 +1,19 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { fetchProjectsWithCoverImage } from "@/utils/fetch-projects"
+import { ProjectGrid } from "@/components/project-card"
 
-export default function Page() {
+export default async function Page() {
+  const projects = await fetchProjectsWithCoverImage()
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -42,8 +46,9 @@ export default function Page() {
           <div className="flex flex-col items-center mb-8">
             <Avatar className="h-32 w-32 mb-4">
               <AvatarImage
-                src="/placeholder.svg?height=128&width=128"
+                src="/profile.jpeg"
                 alt="Björn Tirsén"
+                className="object-cover"
               />
               <AvatarFallback>BT</AvatarFallback>
             </Avatar>
@@ -63,6 +68,11 @@ export default function Page() {
               and lift weights, read and watch movies.
             </p>
           </div>
+        </section>
+
+        <section id="all-projects" className="mb-12">
+          <h2 className="text-2xl font-bold mb-6 text-center">All Projects</h2>
+          <ProjectGrid projects={projects} />
         </section>
 
         <section id="projects" className="mb-12">
@@ -162,5 +172,5 @@ export default function Page() {
         © {new Date().getFullYear()} Björn Tirsén. All rights reserved.
       </footer>
     </div>
-  );
+  )
 }

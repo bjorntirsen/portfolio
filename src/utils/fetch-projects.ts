@@ -27,7 +27,10 @@ export async function fetchProjectsWithCoverImage(): Promise<
     process.env.SUPABASE_KEY!,
   )
 
-  const { data: projects, error } = await supabase.from("projects").select(`
+  const { data: projects, error } = await supabase
+    .from("projects")
+    .select(
+      `
       *,
       images (
         id,
@@ -35,7 +38,9 @@ export async function fetchProjectsWithCoverImage(): Promise<
         alt,
         type
       )
-    `)
+    `,
+    )
+    .order("created_at", { ascending: false })
 
   if (error) {
     console.error("Error fetching projects with images:", error)

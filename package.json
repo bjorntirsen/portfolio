@@ -9,8 +9,7 @@
     "lint": "next lint",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "transfer": "tsc transfer-data.ts --outDir dist && node dist/transfer-data.js",
-    "add:images": "tsc add-images.ts --outDir dist && node dist/add-images.js"
+    "update:data": "tsc update-data.ts --outDir dist && node dist/update-data.js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",

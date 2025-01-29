@@ -16,7 +16,7 @@ export default async function Page() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60">
         <div className="container flex h-14 items-center">
           <nav className="flex items-center space-x-4 lg:space-x-6 mx-6">
             <Link
@@ -41,7 +41,7 @@ export default async function Page() {
         </div>
       </header>
 
-      <main className="flex-grow container mx-auto px-4 py-8">
+      <main className="grow container mx-auto px-4 py-8">
         <section id="about" className="mb-12">
           <div className="flex flex-col items-center mb-8">
             <Avatar className="h-32 w-32 mb-4">

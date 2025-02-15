@@ -1,0 +1,609 @@
+{
+  "status": "success",
+  "results": 22,
+  "data": {
+    "data": [
+      {
+        "_id": "61a9c383dd5bef0016321950",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1638515607/bjorns-portfolio/project-61a9c383dd5bef0016321950-1638515605285.jpg",
+        "images": [
+          "https://res.cloudinary.com/bjorntirsen/image/upload/v1668284550/bjorns-portfolio-images/project-61a9c383dd5bef0016321950-1668284548598.jpg"
+        ],
+        "title": "Couples Expenses",
+        "subtitle": "Split your common expenses",
+        "description": "Individual project. My first TypeScript and Next.js app. Responsive design. In english. It's an app that helps you split your common expenses at the end of each month.",
+        "dateFirstCompleted": "2021-11-26T00:00:00.000Z",
+        "siteLink": "https://couples-expenses.vercel.app/",
+        "whatILearned": [
+          {
+            "icons": ["💸"],
+            "_id": "61a9c383dd5bef0016321951",
+            "paragraph": "It was fun to learn TypeScript and Next.js, I still have a way to go before mastering it."
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/couples-expenses",
+        "slug": "couples-expenses",
+        "imageCoverFilename": "bjorns-portfolio/project-61a9c383dd5bef0016321950-1638515605285"
+      },
+      {
+        "_id": "61811f0220a18900165d63e9",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1635852059/bjorns-portfolio/project-61811f0220a18900165d63e9-1635852056050.jpg",
+        "images": [],
+        "title": "Markdown Reminders",
+        "subtitle": "A MERN TODO app using Markdown",
+        "description": "Group project. Responsive design. In English.",
+        "dateFirstCompleted": "2021-11-02T00:00:00.000Z",
+        "siteLink": "https://mern-sara-todo.netlify.app/",
+        "whatILearned": [
+          {
+            "icons": ["👨‍🔬"],
+            "_id": "618ac4ed8f953a0016d8abf3",
+            "paragraph": "We made our first react-testing-library tests with this app. Very basic tests. We also made some simple integration tests on the backend."
+          }
+        ],
+        "githubRepo": "https://github.com/saraavvi/todo-react-frontend",
+        "slug": "markdown-reminders",
+        "imageCoverFilename": "bjorns-portfolio/project-61811f0220a18900165d63e9-1635852056050"
+      },
+      {
+        "_id": "617e76ca3425ef0016db571c",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1635678040/bjorns-portfolio/project-617e76ca3425ef0016db571c-1635677998589.jpg",
+        "images": [],
+        "title": "Cats & Dogs",
+        "subtitle": "a MERN Full-Stack Webshop",
+        "description": "Group project in English with responsive design.",
+        "dateFirstCompleted": "2021-10-31T00:00:00.000Z",
+        "siteLink": "https://mern-catsanddogs.netlify.app/",
+        "whatILearned": [
+          {
+            "icons": ["👨‍🔬🚨🐕"],
+            "_id": "617e76ca3425ef0016db571d",
+            "paragraph": "We used a Husky pre-commit hook with linting and integration tests for this project. Which was a cool way to work on a group project."
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/mern-catsanddogs",
+        "slug": "cats-and-dogs",
+        "imageCoverFilename": "bjorns-portfolio/project-617e76ca3425ef0016db571c-1635677998589"
+      },
+      {
+        "_id": "62c2fe1cb16c18001634f0eb",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1656946227/bjorns-portfolio/project-62c2fe1cb16c18001634f0eb-1656946226986.jpg",
+        "images": [],
+        "title": "Developing the Developer 2.0",
+        "subtitle": "My updated portfolio page",
+        "description": "Built with Create React App using my REST API for dynamic content. Styled with CSS modules and also used a bit of bootstrap because I was lazy :)",
+        "dateFirstCompleted": "2021-09-20T00:00:00.000Z",
+        "siteLink": "https://bjorntirsen-portfolio.netlify.app",
+        "whatILearned": [
+          {
+            "icons": ["⚛️😎🏎"],
+            "_id": "62c2fe1cb16c18001634f0ec",
+            "paragraph": "It was fun to make my first front end for my new portfolio API. With this, I can update my portfolio very quickly."
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/portfolio-2",
+        "slug": "developing-the-developer-20",
+        "imageCoverFilename": "bjorns-portfolio/project-62c2fe1cb16c18001634f0eb-1656946226986"
+      },
+      {
+        "_id": "613b4b448f95eeae95fbcf64",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1631275861/bjorns-portfolio/project-613b4b448f95eeae95fbcf64-1631275857981.jpg",
+        "images": [],
+        "title": "Björn's Portfolio API",
+        "subtitle": "REST API and CMS for my Portfolio 2.0",
+        "description": "This app lets me manage the content of my portfolio quickly and easily. It's a Express, MongoDB app with a simple Bootstrapped admin interface.",
+        "dateFirstCompleted": "2021-09-10T00:00:00.000Z",
+        "siteLink": "https://bjorns-portfolio-api.herokuapp.com/",
+        "whatILearned": [
+          {
+            "icons": ["😎", "fas fa-bolt", "🏎"],
+            "_id": "613b4b448f95eeae95fbcf65",
+            "paragraph": "I developed this app in order to separate the content from the frontend of my portfolio. This way I can quickly update my portfolio with content, as well as trying out different portfolio designs."
+          },
+          {
+            "icons": ["fab fa-node", "fas fa-cloud"],
+            "_id": "613b4b448f95eeae95fbcf66",
+            "paragraph": "It's a Node/Express/MongoDB app using EJS templating with a very high level of complexity. Project images are uploaded to Cloudinary."
+          },
+          {
+            "icons": ["far fa-lightbulb"],
+            "_id": "613b4b448f95eeae95fbcf67",
+            "paragraph": "The architecture is heavily inspired from the Natours project in this Udemy course: https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/"
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/portfolio-api",
+        "slug": "bjorns-portfolio-api",
+        "imageCoverFilename": "bjorns-portfolio/project-613b4b448f95eeae95fbcf64-1631275857981"
+      },
+      {
+        "_id": "614c4f807027a40016671726",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1632391086/bjorns-portfolio/project-614c4f807027a40016671726-1632391085875.jpg",
+        "images": [],
+        "title": "Natours",
+        "subtitle": "Fullstack Node.JS App",
+        "description": "Huge project from a Udemy course. Including maps, payments, photo uploads, and much more...",
+        "dateFirstCompleted": "2021-07-16T00:00:00.000Z",
+        "siteLink": "https://bjorns-natours.herokuapp.com/",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-node"],
+            "_id": "618ac7098f953a0016d8ac1d",
+            "paragraph": "Huge project from a Udemy course. Including maps, payments, photo uploads, and much more..."
+          },
+          {
+            "icons": ["fas fa-layer-group"],
+            "_id": "618ac7098f953a0016d8ac1e",
+            "paragraph": "Made with Node.js/Express/MongoDB/pug/ JWT/Stripe/Cloudinary/SendGrid/mapbox and much more"
+          },
+          {
+            "icons": ["fas fa-star"],
+            "_id": "618ac7098f953a0016d8ac1f",
+            "paragraph": "I really recommend this course for people who wants to learn how to make fullstack apps: https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/"
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/natours",
+        "slug": "natours",
+        "imageCoverFilename": "bjorns-portfolio/project-614c4f807027a40016671726-1632391085875"
+      },
+      {
+        "_id": "614d889c962a1800164f8100",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1632471212/bjorns-portfolio/project-614d889c962a1800164f8100-1632471212250.jpg",
+        "images": [],
+        "title": "MIB REST API",
+        "subtitle": "My own CRUDable API for MIB Customer Data",
+        "description": "Node.JS/MongoDB CRUDable REST API for my MIB Customer Data app.",
+        "dateFirstCompleted": "2021-06-26T00:00:00.000Z",
+        "siteLink": "",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-node"],
+            "_id": "614d889c962a1800164f8101",
+            "paragraph": "This project was inspired by the design of the Natours project. I wanted to make my own CRUDable REST API for my react frontend app MIB Customer Data."
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/mib-crud-api",
+        "slug": "mib-rest-api",
+        "imageCoverFilename": "bjorns-portfolio/project-614d889c962a1800164f8100-1632471212250"
+      },
+      {
+        "_id": "6142fc453bd9fe001648f003",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1631797742/bjorns-portfolio/project-6142fc453bd9fe001648f003-1631797742325.jpg",
+        "images": [
+          "https://res.cloudinary.com/bjorntirsen/image/upload/v1631797856/bjorns-portfolio-images/project-6142fc453bd9fe001648f003-1631797856516.jpg",
+          "https://res.cloudinary.com/bjorntirsen/image/upload/v1631797856/bjorns-portfolio-images/project-6142fc453bd9fe001648f003-1631797856536.jpg"
+        ],
+        "title": "ManCave",
+        "subtitle": "PHP Fullstack Webshop Project",
+        "description": "Group project. Fullstack project using MySQL/PHP/EJS. Responsive design.",
+        "dateFirstCompleted": "2021-05-28T00:00:00.000Z",
+        "siteLink": "https://bjorns-mancave.herokuapp.com/",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-php", "fas fa-database", "🐬"],
+            "_id": "6142fc453bd9fe001648f004",
+            "paragraph": "Made using vanilla PHP, a MySQL database and EJS templating."
+          },
+          {
+            "icons": ["fas fa-syringe"],
+            "_id": "6142fc453bd9fe001648f005",
+            "paragraph": "The code design is object oriented with a MVC structure and using dependency injection. We have tried to write descriptive relatively short public methods in the classes that utilises helper methods to get the job done."
+          }
+        ],
+        "githubRepo": "https://github.com/saraavvi/mancave",
+        "slug": "mancave",
+        "imageCoverFilename": "bjorns-portfolio/project-6142fc453bd9fe001648f003-1631797742325"
+      },
+      {
+        "_id": "614d8586962a1800164f80d6",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1632470591/bjorns-portfolio/project-614d8586962a1800164f80d6-1632470591685.jpg",
+        "images": [],
+        "title": "GitLab CI/CD Project",
+        "subtitle": "Pipeline building a Docker image",
+        "description": "In this project we used a GitLab pipeline that tested a Node.JS app and built it into a Docker image. I’m gonna add the repo soon.",
+        "dateFirstCompleted": "2021-05-12T00:00:00.000Z",
+        "siteLink": "",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-docker", "fab fa-gitlab"],
+            "_id": "618ac8798f953a0016d8ac30",
+            "paragraph": "In this project we learned the basics of Docker, Eslint and Prettier."
+          },
+          {
+            "icons": ["fas fa-paw"],
+            "_id": "618ac8798f953a0016d8ac31",
+            "paragraph": "We also learned the basics of writing both unit- and integration tests with Husky and Mocha. In the end, we only made a fake deploy of the app."
+          }
+        ],
+        "githubRepo": "",
+        "slug": "gitlab-cicd-project",
+        "imageCoverFilename": "bjorns-portfolio/project-614d8586962a1800164f80d6-1632470591685"
+      },
+      {
+        "_id": "614c4c727027a40016671708",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1632390303/bjorns-portfolio/project-614c4c727027a40016671708-1632390303304.jpg",
+        "images": [],
+        "title": "The Fakestore Creator",
+        "subtitle": "Auto generate site from REST API",
+        "description": "I only completed basic functionality for this project. Paste in a REST API with products and you'll get a visual representation.",
+        "dateFirstCompleted": "2021-05-10T00:00:00.000Z",
+        "siteLink": "https://bjorns-fakestore-creator.herokuapp.com/",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-php", "fab fa-bootstrap"],
+            "_id": "614c4c727027a40016671709",
+            "paragraph": "I wanted to experiment a little with generating visual representations from REST API. My plan was to let you customize how you could display the data. "
+          },
+          {
+            "icons": ["😊"],
+            "_id": "614c4c727027a4001667170a",
+            "paragraph": "We'll see if I'll make an improved version in the future..."
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/bjorns_fakestore_creator",
+        "slug": "the-fakestore-creator",
+        "imageCoverFilename": "bjorns-portfolio/project-614c4c727027a40016671708-1632390303304"
+      },
+      {
+        "_id": "614c49ef7027a400166716ed",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1632389717/bjorns-portfolio/project-614c49ef7027a400166716ed-1632389717132.jpg",
+        "images": [],
+        "title": "Lego Fakestore API",
+        "subtitle": "A REST API made by PHP",
+        "description": "REST API with filter function. You can filter by category and limit how many results you want. Like this: https://legofakestore-api.herokuapp.com/v2/?category=technic&show=2",
+        "dateFirstCompleted": "2021-05-05T00:00:00.000Z",
+        "siteLink": "https://legofakestore-api.herokuapp.com/",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-php", "fas fa-filter"],
+            "_id": "614c49ef7027a400166716ee",
+            "paragraph": "REST API with filter function built by PHP. You can filter by category and limit how many results you want. Like this: https://legofakestore-api.herokuapp.com/v2/?category=technic&show=2"
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/fakelegostore_api",
+        "slug": "lego-fakestore-api",
+        "imageCoverFilename": "bjorns-portfolio/project-614c49ef7027a400166716ed-1632389717132"
+      },
+      {
+        "_id": "614c478f7027a400166716d1",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1632389077/bjorns-portfolio/project-614c478f7027a400166716d1-1632389075948.jpg",
+        "images": [],
+        "title": "Björn's Fakestore",
+        "subtitle": "My first PHP app",
+        "description": "Simple \"fake store\" generated from a REST API.",
+        "dateFirstCompleted": "2021-04-26T00:00:00.000Z",
+        "siteLink": "https://bjorns-fakestore.herokuapp.com/",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-php"],
+            "_id": "614c478f7027a400166716d2",
+            "paragraph": "My first PHP app. Simple \"fake store\" generated from an REST API provided to us."
+          },
+          {
+            "icons": ["fab fa-bootstrap"],
+            "_id": "614c478f7027a400166716d3",
+            "paragraph": "Made using a theme from startbootstrap.com"
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/bjorns_fakestore",
+        "slug": "bjorns-fakestore",
+        "imageCoverFilename": "bjorns-portfolio/project-614c478f7027a400166716d1-1632389075948"
+      },
+      {
+        "_id": "61406af8ff6b3b0016b58033",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1631611667/bjorns-portfolio/project-61406af8ff6b3b0016b58033-1631611667117.jpg",
+        "images": [],
+        "title": "Wack",
+        "subtitle": "Slack clone fullstack project",
+        "description": "Individual project. My first fullstack project. Made with Node/Express/MongoDB/Socket.IO/EJS.",
+        "dateFirstCompleted": "2021-03-28T00:00:00.000Z",
+        "siteLink": "https://wack-channels.herokuapp.com/",
+        "whatILearned": [
+          {
+            "icons": ["🗂"],
+            "_id": "61408354ec7f510016424597",
+            "paragraph": "Individual project. My first fullstack project. Made with Node/Express/MongoDB/Socket.IO/EJS."
+          },
+          {
+            "icons": ["fas fa-plug", "😅"],
+            "_id": "61408354ec7f510016424598",
+            "paragraph": "It took some time to learn how to use Socket.IO and websockets. And I could do with practicing it more."
+          },
+          {
+            "icons": ["👨‍🎨"],
+            "_id": "61408354ec7f510016424599",
+            "paragraph": "After several projects built using Bootstrap I wanted to get back to basics and used vanilla CSS to style this one."
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/wack",
+        "slug": "wack-channels",
+        "imageCoverFilename": "bjorns-portfolio/project-61406af8ff6b3b0016b58033-1631611667117"
+      },
+      {
+        "_id": "614b0111ea1a6900163510c9",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1632305471/bjorns-portfolio/project-614b0111ea1a6900163510c9-1632305471606.jpg",
+        "images": [],
+        "title": "Yahtzee MongoDB Data",
+        "subtitle": "A MongoDB database design",
+        "description": "My first MongoDB database. Group project. Including queries.",
+        "dateFirstCompleted": "2021-02-11T00:00:00.000Z",
+        "siteLink": "",
+        "whatILearned": [
+          {
+            "icons": ["🗂"],
+            "_id": "614b0111ea1a6900163510ca",
+            "paragraph": "My first MongoDB database. Group project. Including queries."
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/yahtzee-mongo-db",
+        "slug": "yahtzee-mongodb-data",
+        "imageCoverFilename": "bjorns-portfolio/project-614b0111ea1a6900163510c9-1632305471606"
+      },
+      {
+        "_id": "614af93cea1a6900163510aa",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1632303467/bjorns-portfolio/project-614af93cea1a6900163510aa-1632303467342.jpg",
+        "images": [],
+        "title": "Max Video DB",
+        "subtitle": "A MySQL database design",
+        "description": "My first MySQL database. Including views, stored procedures, sample data and statistics.",
+        "dateFirstCompleted": "2021-02-04T00:00:00.000Z",
+        "siteLink": "",
+        "whatILearned": [
+          {
+            "icons": ["🗂"],
+            "_id": "614af93cea1a6900163510ab",
+            "paragraph": "My first MySQL database. Including views, stored procedures, sample data and statistics."
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/max-video-db",
+        "slug": "max-video-db",
+        "imageCoverFilename": "bjorns-portfolio/project-614af93cea1a6900163510aa-1632303467342"
+      },
+      {
+        "_id": "611ba957735ee4080dd0f4f2",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1629203062/bjorns-portfolio/project-611ba957735ee4080dd0f4f2-1629203061955.jpg",
+        "title": "MIB Customer Data",
+        "subtitle": "A customer data management app",
+        "description": "Individual project. Slightly more advanced React app. Responsive design. In English.",
+        "dateFirstCompleted": "2021-01-17T00:00:00.000Z",
+        "siteLink": "https://mib-customer-data.netlify.app/",
+        "techniquesUsed": "",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-react"],
+            "_id": "611ba982735ee4080dd0f507",
+            "paragraph": "In this individual project I learned how to use the hook \"useContext\", as well as working with form validation and login functionality in a React app."
+          },
+          {
+            "icons": ["fas fa-network-wired"],
+            "_id": "611ba982735ee4080dd0f508",
+            "paragraph": "We made use of a RESTful CRUD API provided by our teacher."
+          }
+        ],
+        "githubRepo": "https://github.com/bjorntirsen/MIB-customer-data",
+        "images": [],
+        "slug": "mib-customer-data",
+        "imageCoverFilename": "bjorns-portfolio/project-611ba957735ee4080dd0f4f2-1629203061955"
+      },
+      {
+        "_id": "60f1ca914c68741c3397922d",
+        "image": "default.jpg",
+        "images": [],
+        "title": "EZORRO!",
+        "subtitle": "STOCK MARKET HERO",
+        "description": "Group project. My first React site. Responsive design. In English.",
+        "dateFirstCompleted": "2020-12-20T00:00:00.000Z",
+        "siteLink": "https://ezorro.netlify.app/",
+        "techniquesUsed": "",
+        "slug": "ezorro",
+        "githubRepo": "https://github.com/bjorntirsen/eZorro",
+        "imageCoverFilename": "bjorns-portfolio/project-60f1ca914c68741c3397922d-1626976340725",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1626976341/bjorns-portfolio/project-60f1ca914c68741c3397922d-1626976340725.png",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-react", "fab fa-bootstrap"],
+            "_id": "611b9982735ee4080dd0f454",
+            "paragraph": "We made this site with create-react-app and Bootstrap with a custom color palette. It is connected to a small read-only database on Firebase via an API."
+          },
+          {
+            "icons": ["💅", "fab fa-font-awesome"],
+            "_id": "611b9982735ee4080dd0f455",
+            "paragraph": "We made a dynamic arrow icon with styled-components (and Font Awesome) that is used on the currency and markets detail pages."
+          },
+          {
+            "icons": ["fas fa-mobile"],
+            "_id": "611b9982735ee4080dd0f456",
+            "paragraph": "With this site we have used Bootstraps responsive classes for the layout. A first for me."
+          }
+        ]
+      },
+      {
+        "_id": "60f3e65b474d876cc502a6d4",
+        "image": "default.jpg",
+        "images": [
+          "https://res.cloudinary.com/bjorntirsen/image/upload/v1631273283/bjorns-portfolio-images/project-60f3e65b474d876cc502a6d4-1631273215788.jpg",
+          "https://res.cloudinary.com/bjorntirsen/image/upload/v1631273323/bjorns-portfolio-images/project-60f3e65b474d876cc502a6d4-1631273279669.jpg",
+          "https://res.cloudinary.com/bjorntirsen/image/upload/v1631273339/bjorns-portfolio-images/project-60f3e65b474d876cc502a6d4-1631273320928.jpg",
+          "https://res.cloudinary.com/bjorntirsen/image/upload/v1631273342/bjorns-portfolio-images/project-60f3e65b474d876cc502a6d4-1631273337225.jpg"
+        ],
+        "title": "Developing the Developer 1.0",
+        "subtitle": "My first portfolio",
+        "description": "My first portfolio site that was replaced a year later. No longer online, but you can check out the screenshots.",
+        "dateFirstCompleted": "2020-11-13T00:00:00.000Z",
+        "siteLink": "",
+        "techniquesUsed": "",
+        "githubRepo": "https://github.com/bjorntirsen/bjorntirsen.github.io",
+        "slug": "developing-the-developer",
+        "imageCoverFilename": "bjorns-portfolio/project-60f3e65b474d876cc502a6d4-1631274502441",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1631274514/bjorns-portfolio/project-60f3e65b474d876cc502a6d4-1631274502441.jpg",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-bootstrap"],
+            "_id": "613b610101d1a4ba2ba48da2",
+            "paragraph": "I started the site by using Bootstrap 5 Alpha and customized the classes a bit as well as adding my own color palette. As you can see it's autumn themed."
+          },
+          {
+            "icons": [
+              "fab fa-css3-alt",
+              "+",
+              "fab fa-html5",
+              "=",
+              "fas fa-heart"
+            ],
+            "_id": "613b610101d1a4ba2ba48da3",
+            "paragraph": "But because the project required us to show we can use grid and flexbox I used that for the main layout of the page instead of bootstraps classes."
+          },
+          {
+            "icons": ["fas fa-mobile"],
+            "_id": "613b610101d1a4ba2ba48da4",
+            "paragraph": "I used media queries and responsive images for the first time to make the site responsive."
+          },
+          {
+            "icons": ["fab fa-font-awesome-flag"],
+            "_id": "613b610101d1a4ba2ba48da5",
+            "paragraph": "Of course, I also had to use some Font Awesome icons.  I didn't use any JS on this project other than Bootstraps built-in JS."
+          }
+        ]
+      },
+      {
+        "_id": "60f2dd0bfb56b442b03e7e86",
+        "image": "default.jpg",
+        "images": [],
+        "title": "ACME Events",
+        "subtitle": "Site for entertainment events",
+        "description": "Group project. An event page where you can CRUD events to Local Storage. Non-responsive design. In Swedish.",
+        "dateFirstCompleted": "2020-10-30T00:00:00.000Z",
+        "siteLink": "https://bjorntirsen.github.io/event_project/",
+        "techniquesUsed": "",
+        "slug": "acme-events",
+        "githubRepo": "https://github.com/bjorntirsen/event_project",
+        "imageCoverFilename": "bjorns-portfolio/project-60f2dd0bfb56b442b03e7e86-1626976421804",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1626976423/bjorns-portfolio/project-60f2dd0bfb56b442b03e7e86-1626976421804.png",
+        "whatILearned": [
+          {
+            "icons": ["fas fa-laptop-code"],
+            "_id": "611ba1d2735ee4080dd0f49f",
+            "paragraph": "For this group project we were asked to create functionality for \"CRUDing\" events to/from Local Storage (LS). We opted for translating all JS event-objects into JSON and saving them as one JSON object in LS each time any changes were made."
+          },
+          {
+            "icons": ["🗃"],
+            "_id": "611ba1d2735ee4080dd0f4a0",
+            "paragraph": "If you load the page without any events already in LS, our JS will create five \"default events\" and save them there."
+          },
+          {
+            "icons": [
+              "fab fa-html5",
+              "+",
+              "fab fa-css3-alt",
+              "+",
+              "fab fa-js-square",
+              "=",
+              "fas fa-heart"
+            ],
+            "_id": "611ba1d2735ee4080dd0f4a1"
+          }
+        ]
+      },
+      {
+        "_id": "60f2e127b951f545662a2616",
+        "image": "default.jpg",
+        "images": [],
+        "title": "Javascript Quiz",
+        "subtitle": "Test your coding knowledge",
+        "description": "Individual project. A quiz app that fetches its questions from a REST API. Semi-responsive design. In English.",
+        "dateFirstCompleted": "2020-10-12T00:00:00.000Z",
+        "siteLink": "https://bjorntirsen.github.io/quiz_project/",
+        "techniquesUsed": "",
+        "slug": "javascript-quiz",
+        "githubRepo": "https://github.com/bjorntirsen/quiz_project",
+        "imageCoverFilename": "bjorns-portfolio/project-60f2e127b951f545662a2616-1626976584336",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1626976584/bjorns-portfolio/project-60f2e127b951f545662a2616-1626976584336.jpg",
+        "whatILearned": [
+          {
+            "icons": ["fas fa-network-wired"],
+            "_id": "611ba358735ee4080dd0f4d3",
+            "paragraph": "We were asked to make a quiz web app by fetching questions from a REST API.  This was interesting, cause I had never used an API before and also never used async JavaScript."
+          },
+          {
+            "icons": ["fas fa-file-code"],
+            "_id": "611ba358735ee4080dd0f4d4",
+            "paragraph": "I chose to do this by making two HTML pages where the first is actually a form for choosing how many questions you want. The second HTML page is kind of a SPA (single-page application)."
+          },
+          {
+            "icons": ["fas fa-spinner"],
+            "_id": "611ba358735ee4080dd0f4d5",
+            "paragraph": "If you pay attention, you might notice that there is a \"fetching questions\" text displayed for a fraction of a second before the \"start quiz\" button appears."
+          },
+          {
+            "icons": [
+              "fab fa-html5",
+              "+",
+              "fab fa-css3-alt",
+              "+",
+              "fab fa-js-square",
+              "=",
+              "fas fa-heart"
+            ],
+            "_id": "611ba358735ee4080dd0f4d6"
+          }
+        ]
+      },
+      {
+        "_id": "60f2d4de8585923187808040",
+        "image": "default.jpg",
+        "images": [],
+        "title": "Yahtzee Game",
+        "subtitle": "Play the classic dice game on the web",
+        "description": "Group project. Uses javascript to simulate dice throws. My first web project. Only basic features completed. Non-responsive design.",
+        "dateFirstCompleted": "2020-09-24T00:00:00.000Z",
+        "siteLink": "https://yatzy-project.netlify.app/",
+        "techniquesUsed": "",
+        "slug": "yahtzee-game",
+        "githubRepo": "https://github.com/bjorntirsen/yatzy_project",
+        "imageCoverFilename": "bjorns-portfolio/project-60f2d4de8585923187808040-1626976609782",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1626976610/bjorns-portfolio/project-60f2d4de8585923187808040-1626976609782.jpg",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-js-square"],
+            "_id": "611ba500735ee4080dd0f4e5",
+            "paragraph": "For our first school project we were asked to make a Yahtzee game from scratch using JavaScript."
+          },
+          {
+            "icons": ["fas fa-sitemap"],
+            "_id": "611ba500735ee4080dd0f4e6",
+            "paragraph": "We were introduced to DOM manipulation, object-oriented coding as well as basic HTML and CSS during our development of the site."
+          },
+          {
+            "icons": ["fas fa-dice"],
+            "_id": "611ba500735ee4080dd0f4e7",
+            "paragraph": "Though we wanted to do more with this site, we didn't find the time to complete the full functionality that we had intended. In order to meet the deadline, we opted for a very simple final product."
+          },
+          {
+            "icons": ["💪"],
+            "_id": "611ba500735ee4080dd0f4e8",
+            "paragraph": "Actually not bad for four guys completely new to web development to throw together in two weeks!"
+          }
+        ]
+      },
+      {
+        "_id": "614c43d67027a400166716b6",
+        "imageCoverUrl": "https://res.cloudinary.com/bjorntirsen/image/upload/v1632388113/bjorns-portfolio/project-614c43d67027a400166716b6-1632388113106.jpg",
+        "images": [],
+        "title": "Dice Game",
+        "subtitle": "A simple Java game",
+        "description": "One of the few things I have written in Java. Enable \"Interactive\" to try the game out. In English.",
+        "dateFirstCompleted": "2020-05-31T00:00:00.000Z",
+        "siteLink": "https://www.jdoodle.com/ia/h99",
+        "whatILearned": [
+          {
+            "icons": ["fab fa-java", "fas fa-dice", "😅"],
+            "_id": "614c43d67027a400166716b7",
+            "paragraph": "One of the few things I have written in Java. Enable \"Interactive\" to try the game out. In English."
+          }
+        ],
+        "githubRepo": "",
+        "slug": "dice-game",
+        "imageCoverFilename": "bjorns-portfolio/project-614c43d67027a400166716b6-1632388113106"
+      }
+    ]
+  }
+}

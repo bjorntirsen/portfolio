@@ -30,7 +30,7 @@ export default function FeaturedProjects() {
               "A responsive weather dashboard that provides real-time weather information and forecasts. Built with Vue.js and integrates with a third-party weather API.",
             tags: ["Vue.js", "API Integration", "Chart.js"],
           },
-        ].map((project, index) => (
+        ].map((project) => (
           <Card key={project.title.toLowerCase().replace(/\s+/g, "-")}>
             <CardHeader>
               <CardTitle>{project.title}</CardTitle>

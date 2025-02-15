@@ -6,11 +6,7 @@ import {
   CardDescription,
 } from "@/components/ui/card"
 
-interface Props {
-  foo?: string
-}
-
-export default function FeaturedProjects({ foo = "bar" }: Props) {
+export default function FeaturedProjects() {
   return (
     <section id="featured-projects" className="mb-12">
       <h2 className="text-2xl font-bold mb-6 text-center">Featured Projects</h2>
@@ -35,7 +31,7 @@ export default function FeaturedProjects({ foo = "bar" }: Props) {
             tags: ["Vue.js", "API Integration", "Chart.js"],
           },
         ].map((project, index) => (
-          <Card key={index}>
+          <Card key={project.title.toLowerCase().replace(/\s+/g, "-")}>
             <CardHeader>
               <CardTitle>{project.title}</CardTitle>
             </CardHeader>
@@ -44,9 +40,11 @@ export default function FeaturedProjects({ foo = "bar" }: Props) {
                 {project.description}
               </CardDescription>
               <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag, tagIndex) => (
+                {project.tags.map((tag) => (
                   <span
-                    key={tagIndex}
+                    key={`${project.title}-${tag}`
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}
                     className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs"
                   >
                     {tag}

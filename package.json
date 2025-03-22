@@ -11,7 +11,8 @@
     "test:coverage": "vitest run --coverage",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "update:data": "tsc update-data.ts --outDir dist && node dist/update-data.js"
+    "update:data": "tsc update-data.ts --outDir dist && node dist/update-data.js",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.2",

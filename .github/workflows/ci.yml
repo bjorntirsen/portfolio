@@ -74,7 +74,7 @@ jobs:
       - name: Check formatting
         run: pnpm format:check
 
-  build:
+  typecheck:
     needs: install
     runs-on: ubuntu-latest
     steps:
@@ -89,8 +89,8 @@ jobs:
           version: 10
       - name: Restore dependencies
         run: pnpm install --frozen-lockfile
-      - name: Build application
-        run: pnpm build
+      - name: Type check
+        run: pnpm typecheck
 
   coverage:
     needs: test

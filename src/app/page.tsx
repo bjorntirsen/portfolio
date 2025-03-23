@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { fetchProjectsWithCoverImage } from "@/utils/fetch-projects"
 import { ProjectGrid } from "@/components/project-card"
+import { Theme } from "@radix-ui/themes"
+import ThemeToggle from "@/components/ui/theme-toggle"
 
 export default async function Page() {
   const projects = await fetchProjectsWithCoverImage()
@@ -10,8 +12,8 @@ export default async function Page() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <nav className="flex items-center space-x-4 lg:space-x-6 mx-6">
+        <div className="flex h-14 items-center w-full px-4 justify-between container mx-auto">
+          <nav className="flex items-center space-x-4 lg:space-x-6">
             <Link
               href="#about"
               className="text-sm font-medium transition-colors hover:text-primary"
@@ -31,6 +33,7 @@ export default async function Page() {
               Contact
             </Link>
           </nav>
+          <ThemeToggle />
         </div>
       </header>
 

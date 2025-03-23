@@ -49,7 +49,7 @@ export function ProjectCard({ project }: { project: ProjectWithCoverImage }) {
               src={project.coverImage.image_url}
               alt={project.coverImage.alt || project.title}
               fill
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 384px"
               style={{
                 objectFit: "cover",
               }}

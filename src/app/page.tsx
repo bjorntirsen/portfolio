@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { fetchProjectsWithCoverImage } from "@/utils/fetch-projects"
 import { ProjectGrid } from "@/components/project-card"
-import { Theme } from "@radix-ui/themes"
 import ThemeToggle from "@/components/ui/theme-toggle"
 
 export default async function Page() {

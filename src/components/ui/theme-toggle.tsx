@@ -3,12 +3,20 @@
 import { useTheme } from "next-themes"
 import { MoonIcon, SunIcon, DesktopIcon } from "@radix-ui/react-icons"
 import { IconButton, Tooltip } from "@radix-ui/themes"
-import Head from "next/head"
+import { useState, useEffect } from "react"
 
 export default function ThemeToggle({
   ...props
 }: React.ComponentPropsWithoutRef<typeof IconButton>) {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const { theme, systemTheme, setTheme } = useTheme()
+
+  if (!mounted) return null
 
   const resolvedTheme = theme === "system" ? systemTheme : theme
 

@@ -1,17 +1,17 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { fetchProjectsWithCoverImage } from "@/utils/fetch-projects"
 import { ProjectGrid } from "@/components/project-card"
+import ThemeToggle from "@/components/theme-toggle"
+import { Avatar, Heading, Text, Button } from "@radix-ui/themes"
 
 export default async function Page() {
   const projects = await fetchProjectsWithCoverImage()
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <nav className="flex items-center space-x-4 lg:space-x-6 mx-6">
+    <div className="min-h-screen bg-[var(--accent-3)] flex flex-col">
+      <header className="sticky top-0 z-50 w-full border-b bg-[var(--accent-a5)] backdrop-blur-sm supports-backdrop-filter:bg-[var(--accent-3)]/60">
+        <div className="flex h-14 items-center w-full px-4 justify-between container mx-auto">
+          <nav className="flex items-center space-x-4 lg:space-x-6">
             <Link
               href="#about"
               className="text-sm font-medium transition-colors hover:text-primary"
@@ -31,49 +31,54 @@ export default async function Page() {
               Contact
             </Link>
           </nav>
+          <ThemeToggle />
         </div>
       </header>
 
       <main className="grow container mx-auto px-4 py-8">
         <section id="about" className="mb-12">
           <div className="flex flex-col items-center mb-8">
-            <Avatar className="h-32 w-32 mb-4">
-              <AvatarImage
-                src="/profile.jpeg"
-                alt="Björn Tirsén"
-                className="object-cover"
-              />
-              <AvatarFallback>BT</AvatarFallback>
-            </Avatar>
-            <h1 className="text-3xl font-bold">Björn Tirsén</h1>
-            <p className="text-xl text-muted-foreground">
-              Full Stack Developer
-            </p>
+            <Avatar
+              size="8"
+              fallback="BT"
+              src="/profile.jpeg"
+              radius="full"
+              mb="4"
+            ></Avatar>
+            <Heading>The Portfolio of Björn Tirsén</Heading>
+            <Text>
+              Full stack developer with a passion for building fast, accessible
+              web apps.
+            </Text>
           </div>
           <div className="max-w-2xl mx-auto text-center">
-            <p className="text-lg mb-4">
+            <Text as="p" mb="2">
               Hello! I&#39;m a passionate full stack developer with 3 years of
               experience in building web applications. I specialize in React,
               Node.js, and everything connected to the web.
-            </p>
-            <p className="text-lg">
+            </Text>
+            <Text as="p" mb="2">
               When I&#39;m not coding, I like to spend time with the family, run
               and lift weights, read and watch movies.
-            </p>
+            </Text>
           </div>
         </section>
 
         <section id="projects" className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-center">All Projects</h2>
+          <Heading as="h2" size="5" mb="6" align="center">
+            All Projects
+          </Heading>
           <ProjectGrid projects={projects} />
         </section>
 
         <section id="contact" className="text-center">
-          <h2 className="text-2xl font-bold mb-6">Let&#39;s Connect</h2>
-          <p className="mb-6">
+          <Heading as="h2" size="5" mb="6" align="center">
+            Let&#39;s Connect
+          </Heading>
+          <Text as="p" mb="5">
             Feel free to reach out for collaborations or just a friendly chat.
-          </p>
-          <div className="flex justify-center space-x-4">
+          </Text>
+          <div className="flex gap-2 justify-center">
             <Button asChild variant="outline">
               <Link
                 href="https://github.com/johndoe"

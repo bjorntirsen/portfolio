@@ -69,7 +69,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     return accentColors[index % accentColors.length]
   }
 
-  const color: ThemeProps["accentColor"] = "indigo"
   return (
     <Theme accentColor={getAccentColor(index)} asChild>
       <Card

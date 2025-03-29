@@ -1,22 +1,15 @@
 import Image from "next/image"
 import {
-  Box,
   Card,
+  Dialog,
   Text,
   Inset,
   Button,
   Flex,
   Theme,
   ThemeProps,
+  Heading,
 } from "@radix-ui/themes"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import { ExternalLink } from "lucide-react"
 
 interface IImage {
@@ -78,82 +71,98 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   const color: ThemeProps["accentColor"] = "indigo"
   return (
-    <Theme accentColor={getAccentColor(index)}>
-      <Box className="w-full max-w-sm mx-auto bg-[var(--accent-3)]">
-        <Card>
+    <Theme accentColor={getAccentColor(index)} asChild>
+      <Card
+        key={project.id}
+        style={{ display: "flex" }}
+        className="bg-[var(--accent-3)] rounded-xl p-4 flex-col animate-rotate-y
+"
+      >
+        {project.coverImage && (
           <Inset
             clip="padding-box"
             side="top"
             pb="current"
-            className="relative h-64 bg-gray-500"
+            className="relative h-64 bg-gray-500 rounded-t-xl"
           >
-            {project.coverImage && (
-              <Image
-                src={project.coverImage.image_url}
-                alt={project.coverImage.alt || project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 384px"
-                style={{
-                  objectFit: "cover",
-                }}
-              />
-            )}
+            <Image
+              src={project.coverImage.image_url}
+              alt={project.coverImage.alt || project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 384px"
+              style={{
+                objectFit: "cover",
+                objectPosition: "top",
+              }}
+            />
           </Inset>
-          <div className="h-2" />
-          <Flex direction="column" gap="2">
-            <Text size="3">{project.title}</Text>
-            <Text size="2">{project.subtitle}</Text>
-            <Text size="2">
+        )}
+        <Flex direction="column" flexGrow="1" p="2" minHeight="0">
+          <Flex direction="column" flexGrow="1">
+            <Heading as="h3" size="5" mt="4" mb="2">
+              {project.title}
+            </Heading>
+            <Text weight="light" mb="1">
+              {project.subtitle}
+            </Text>
+            <Text weight="light" mb="1">
+              Created:{" "}
               {new Date(project.created_at).toLocaleDateString("sv-SE")}
             </Text>
-            <Text size="2">{project.description}</Text>
-            <div className="flex flex-wrap gap-2">
-              {project.repo && (
-                <Button variant="outline" asChild>
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Repo <ExternalLink />
-                  </a>
-                </Button>
-              )}
-              {project.live_url && (
-                <Button variant="outline" asChild>
-                  <a
-                    href={project.live_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Live Site <ExternalLink />
-                  </a>
-                </Button>
-              )}
-              {project.lessons_learned && (
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="solid">Lessons Learned</Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                      <DialogTitle>Lessons Learned</DialogTitle>
-                      <DialogDescription>
-                        Key takeaways from the {project.title} project
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="mt-4">
-                      <p className="text-sm text-muted-foreground">
-                        {project.lessons_learned}
-                      </p>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              )}
-            </div>
+            <Text size="2" mt="2">
+              {project.description}
+            </Text>
           </Flex>
-        </Card>
-      </Box>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.repo && (
+              <Button variant="outline" asChild>
+                <a
+                  href={project.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Repo <ExternalLink />
+                </a>
+              </Button>
+            )}
+            {project.live_url && (
+              <Button variant="outline" asChild>
+                <a
+                  href={project.live_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Site <ExternalLink />
+                </a>
+              </Button>
+            )}
+            {project.lessons_learned && (
+              <Dialog.Root>
+                <Dialog.Trigger>
+                  <Button variant="solid">Lessons Learned</Button>
+                </Dialog.Trigger>
+                <Dialog.Content asChild>
+                  <div
+                    className="max-w-[450px]"
+                    style={{ backgroundColor: "var(--accent-2)" }}
+                  >
+                    <Dialog.Title>Lessons Learned</Dialog.Title>
+                    <Dialog.Description>
+                      Key takeaways from the {project.title} project
+                    </Dialog.Description>
+                    <Text as="p" className="text-sm text-muted-foreground">
+                      {project.lessons_learned}
+                    </Text>
+                    <Dialog.Close>
+                      <Button mt="4">Close</Button>
+                    </Dialog.Close>
+                  </div>
+                </Dialog.Content>
+              </Dialog.Root>
+            )}
+          </div>
+        </Flex>
+      </Card>
     </Theme>
   )
 }
@@ -164,9 +173,14 @@ export function ProjectGrid({
   projects: ProjectWithCoverImage[]
 }) {
   return (
+    // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 [grid-auto-rows:1fr]">
+    //   {projects.map((project, index) => (
+    //     <ProjectCard key={project.id} project={project} index={index} />
+    //   ))}
+    // </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.map((project, index) => (
-        <ProjectCard key={project.id} project={project} index={index} />
+      {projects.map((p, i) => (
+        <ProjectCard project={p} index={i} key={p.id} />
       ))}
     </div>
   )

@@ -10,7 +10,7 @@
       "automerge": true
     }
   ],
-  "schedule": ["every weekend"],
+  "schedule": ["0 9 * * *"],
   "prHourlyLimit": 4,
   "stabilityDays": 3,
   "labels": ["dependencies"],

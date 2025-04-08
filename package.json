@@ -34,7 +34,7 @@
     "@supabase/supabase-js": "2.49.4",
     "@tailwindcss/postcss": "4.0.0",
     "@testing-library/react": "16.3.0",
-    "@types/node": "22.13.11",
+    "@types/node": "22.14.0",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
     "@vitejs/plugin-react": "4.3.4",

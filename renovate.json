@@ -23,5 +23,6 @@
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["* 4 * * 1"]
-  }
+  },
+  "dependencyDashboardApproval": false
 }

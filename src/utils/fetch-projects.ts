@@ -7,7 +7,7 @@ interface IImage {
   type: "cover" | "regular"
 }
 
-interface ProjectWithCoverImage {
+export interface ProjectWithCoverImage {
   id: string
   title: string
   subtitle: string

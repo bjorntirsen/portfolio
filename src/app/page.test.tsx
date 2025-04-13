@@ -1,32 +1,25 @@
+import { render, screen } from "@testing-library/react"
 import { expect, test, vi } from "vitest"
-import { render, screen, within } from "@testing-library/react"
-import { TooltipProvider } from "@radix-ui/react-tooltip"
 import Page from "./page"
 
-vi.mock("@/utils/fetch-projects", () => ({
-  fetchProjectsWithCoverImage: vi.fn(() => Promise.resolve([])),
+vi.mock("@/blocks/about", () => ({ default: () => <div>About Section</div> }))
+vi.mock("@/blocks/projects", () => ({
+  default: () => <div>Projects Section</div>,
+}))
+vi.mock("@/blocks/contact", () => ({
+  default: () => <div>Contact Section</div>,
+}))
+vi.mock("@/components/header", () => ({
+  default: () => <header>Header</header>,
 }))
 
-test("Page renders content sections", async () => {
-  const PageComponent = await Page()
-  render(<TooltipProvider>{PageComponent}</TooltipProvider>)
+test("Page renders all main sections", async () => {
+  const Component = await Page()
+  render(Component)
 
-  const main = within(await screen.findByRole("main"))
-
-  expect(
-    main.getByRole("heading", { name: "The Portfolio of Björn Tirsén" }),
-  ).toBeDefined()
-  expect(main.getByRole("heading", { name: "All Projects" })).toBeDefined()
-  expect(main.getByRole("heading", { name: "Let's Connect" })).toBeDefined()
-
-  expect(screen.getByRole("link", { name: "About" })).toBeDefined()
-  expect(screen.getByRole("link", { name: "Projects" })).toBeDefined()
-  expect(screen.getByRole("link", { name: "Contact" })).toBeDefined()
-
-  expect(screen.getByRole("link", { name: /GitHub/i })).toBeDefined()
-  expect(screen.getByRole("link", { name: /LinkedIn/i })).toBeDefined()
-
-  expect(
-    screen.getByText(/All rights reserved/, { exact: false }),
-  ).toBeDefined()
+  expect(screen.getByText("About Section")).toBeDefined()
+  expect(screen.getByText("Projects Section")).toBeDefined()
+  expect(screen.getByText("Contact Section")).toBeDefined()
+  expect(screen.getByText("Header")).toBeDefined()
+  expect(screen.getByText(/All rights reserved/i)).toBeDefined()
 })

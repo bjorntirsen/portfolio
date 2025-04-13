@@ -165,22 +165,3 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     </Theme>
   )
 }
-
-export function ProjectGrid({
-  projects,
-}: {
-  projects: ProjectWithCoverImage[]
-}) {
-  return (
-    // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 [grid-auto-rows:1fr]">
-    //   {projects.map((project, index) => (
-    //     <ProjectCard key={project.id} project={project} index={index} />
-    //   ))}
-    // </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.map((p, i) => (
-        <ProjectCard project={p} index={i} key={p.id} />
-      ))}
-    </div>
-  )
-}

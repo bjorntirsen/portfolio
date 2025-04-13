@@ -74,20 +74,20 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       <Card
         key={project.id}
         style={{ display: "flex" }}
-        className="bg-[var(--accent-3)] rounded-xl p-4 flex-col animate-rotate-y
-"
+        className="animate-rotate-y flex-col rounded-xl bg-[var(--accent-3)] p-4"
       >
         {project.coverImage && (
           <Inset
             clip="padding-box"
             side="top"
             pb="current"
-            className="relative h-64 bg-gray-500 rounded-t-xl"
+            className="relative h-64 rounded-t-xl bg-gray-500"
           >
             <Image
               src={project.coverImage.image_url}
               alt={project.coverImage.alt || project.title}
               fill
+              priority={index === 0}
               sizes="(max-width: 768px) 100vw, 384px"
               style={{
                 objectFit: "cover",
@@ -149,7 +149,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     <Dialog.Description>
                       Key takeaways from the {project.title} project
                     </Dialog.Description>
-                    <Text as="p" className="text-sm text-muted-foreground">
+                    <Text as="p" className="text-muted-foreground text-sm">
                       {project.lessons_learned}
                     </Text>
                     <Dialog.Close>

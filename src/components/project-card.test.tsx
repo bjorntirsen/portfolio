@@ -3,7 +3,10 @@ import { expect, test, vi } from "vitest"
 import { ProjectCard } from "./project-card"
 
 vi.mock("next/image", () => ({
-  default: (props: any) => <img {...props} data-testid="project-image" />,
+  default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    /* eslint-disable @next/next/no-img-element */
+    <img {...props} data-testid="project-image" alt={props.alt || ""} />
+  ),
 }))
 
 test("ProjectCard renders project content and links", () => {

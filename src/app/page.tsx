@@ -5,15 +5,15 @@ import Contact from "@/blocks/contact"
 
 export default async function Page() {
   return (
-    <div className="min-h-screen bg-[var(--accent-3)] flex flex-col">
+    <div className="flex min-h-screen flex-col bg-[var(--accent-3)]">
       <Header />
-      <main className="grow container mx-auto px-4 py-8">
+      <main className="container mx-auto grow px-4 py-8">
         <About />
         <Projects />
         <Contact />
       </main>
 
-      <footer className="border-t py-4 text-center text-sm text-muted-foreground">
+      <footer className="text-muted-foreground border-t py-4 text-center text-sm">
         © {new Date().getFullYear()} Björn Tirsén. All rights reserved.
       </footer>
     </div>

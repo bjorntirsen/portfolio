@@ -9,7 +9,7 @@ export default async function Projects() {
       <Heading as="h2" size="5" mb="6" align="center">
         All Projects
       </Heading>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
           <ProjectCard project={p} index={i} key={p.id} />
         ))}

@@ -1,23 +1,26 @@
-import { Avatar, Heading, Text } from "@radix-ui/themes"
+import Image from "next/image"
+import { Heading, Text } from "@radix-ui/themes"
 
 export default function About() {
   return (
     <section id="about" className="mb-12">
-      <div className="flex flex-col items-center mb-8">
-        <Avatar
-          size="8"
-          fallback="BT"
-          src="/profile.jpeg"
-          radius="full"
-          mb="4"
-        ></Avatar>
+      <div className="mb-8 flex flex-col items-center">
+        <div className="relative mb-4 size-32 overflow-hidden rounded-full">
+          <Image
+            src="/profile.jpeg"
+            alt="Björn Tirsén"
+            fill
+            sizes="128px"
+            className="object-cover"
+          />
+        </div>
         <Heading>The Portfolio of Björn Tirsén</Heading>
         <Text>
           Full stack developer with a passion for building fast, accessible web
           apps.
         </Text>
       </div>
-      <div className="max-w-2xl mx-auto text-center">
+      <div className="mx-auto max-w-2xl text-center">
         <Text as="p" mb="2">
           Hello! I&#39;m a passionate full stack developer with 3 years of
           experience in building web applications. I specialize in React,

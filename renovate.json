@@ -10,7 +10,7 @@
       "automerge": true
     },
     {
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "lockFileMaintenance"],
       "groupName": "minor and patch",
       "automerge": true
     }

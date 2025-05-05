@@ -1,8 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
+  "automerge": true,
   "automergeType": "pr",
   "requiredStatusChecks": ["test", "lint", "typecheck"],
+  "dependencyDashboard": false,
+  "prCreation": "immediate",
+  "schedule": ["0 9 * * *"],
+  "prHourlyLimit": 4,
+  "stabilityDays": 3,
+  "labels": ["dependencies"],
+  "rangeStrategy": "pin",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["0 4 * * 1"]
+  },
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
@@ -14,17 +26,5 @@
       "groupName": "minor and patch",
       "automerge": true
     }
-  ],
-  "schedule": ["* 9 * * *"],
-  "prHourlyLimit": 4,
-  "stabilityDays": 3,
-  "labels": ["dependencies"],
-  "rangeStrategy": "pin",
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["* 4 * * 1"]
-  },
-  "dependencyDashboard": false,
-  "prCreation": "immediate",
-  "dependencyDashboardApproval": false
+  ]
 }

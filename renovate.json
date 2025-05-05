@@ -24,5 +24,7 @@
     "enabled": true,
     "schedule": ["* 4 * * 1"]
   },
+  "dependencyDashboard": false,
+  "prCreation": "immediate",
   "dependencyDashboardApproval": false
 }

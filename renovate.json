@@ -6,14 +6,14 @@
   "requiredStatusChecks": ["test", "lint", "typecheck"],
   "dependencyDashboard": false,
   "prCreation": "immediate",
-  "schedule": ["0 9 * * *"],
+  "schedule": ["* 9 * * *"],
   "prHourlyLimit": 4,
   "stabilityDays": 3,
   "labels": ["dependencies"],
   "rangeStrategy": "pin",
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": ["0 4 * * 1"]
+    "schedule": ["* 4 * * 1"]
   },
   "packageRules": [
     {

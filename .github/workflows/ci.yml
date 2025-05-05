@@ -70,7 +70,7 @@ jobs:
       - name: Restore dependencies
         run: pnpm install --frozen-lockfile
       - name: Validate renovate.json
-        run: npx renovate-config-validator --config-file renovate.json
+        run: npx --yes --package renovate -- renovate-config-validator renovate.json
       - name: Run linting
         run: pnpm lint
       - name: Check formatting

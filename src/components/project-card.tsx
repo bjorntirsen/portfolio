@@ -1,18 +1,14 @@
-"use client"
-
 import Image from "next/image"
 import {
   Card,
-  Dialog,
   Text,
   Inset,
-  Button,
   Flex,
   Theme,
   ThemeProps,
   Heading,
 } from "@radix-ui/themes"
-import { ExternalLink } from "lucide-react"
+import { ProjectButtons } from "./project-buttons"
 
 interface IImage {
   id: string
@@ -114,54 +110,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               {project.description}
             </Text>
           </Flex>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.repo && (
-              <Button variant="outline" asChild>
-                <a
-                  href={project.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Repo <ExternalLink />
-                </a>
-              </Button>
-            )}
-            {project.live_url && (
-              <Button variant="outline" asChild>
-                <a
-                  href={project.live_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Live Site <ExternalLink />
-                </a>
-              </Button>
-            )}
-            {project.lessons_learned && (
-              <Dialog.Root>
-                <Dialog.Trigger>
-                  <Button variant="solid">Lessons Learned</Button>
-                </Dialog.Trigger>
-                <Dialog.Content asChild>
-                  <div
-                    className="max-w-[450px]"
-                    style={{ backgroundColor: "var(--accent-2)" }}
-                  >
-                    <Dialog.Title>Lessons Learned</Dialog.Title>
-                    <Dialog.Description>
-                      Key takeaways from the {project.title} project
-                    </Dialog.Description>
-                    <Text as="p" className="text-muted-foreground text-sm">
-                      {project.lessons_learned}
-                    </Text>
-                    <Dialog.Close>
-                      <Button mt="4">Close</Button>
-                    </Dialog.Close>
-                  </div>
-                </Dialog.Content>
-              </Dialog.Root>
-            )}
-          </div>
+          <ProjectButtons
+            repo={project.repo}
+            live_url={project.live_url}
+            lessons_learned={project.lessons_learned}
+            title={project.title}
+          />
         </Flex>
       </Card>
     </Theme>

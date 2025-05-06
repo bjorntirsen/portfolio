@@ -24,7 +24,7 @@ export async function fetchProjectsWithCoverImage(): Promise<
 > {
   const supabase = createClient(
     process.env.SUPABASE_URL!,
-    process.env.SUPABASE_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
   )
 
   const { data: projects, error } = await supabase

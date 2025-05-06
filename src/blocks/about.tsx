@@ -15,7 +15,7 @@ export default function About() {
           />
         </div>
         <Heading>The Portfolio of Björn Tirsén</Heading>
-        <Text>
+        <Text className="text-center">
           Full stack developer with a passion for building fast, accessible web
           apps.
         </Text>

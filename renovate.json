@@ -27,6 +27,10 @@
       "matchUpdateTypes": ["lockFileMaintenance"],
       "groupName": "lockfile maintenance",
       "schedule": ["* 4 * * 1"]
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions updates"
     }
   ]
 }

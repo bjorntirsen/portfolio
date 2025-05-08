@@ -5,12 +5,12 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["patch", "pin"],
-      "groupName": "non-breaking updates",
+      "groupName": "non-breaking updates"
     },
     {
       "matchUpdateTypes": ["minor"],
       "matchCurrentVersion": "!/^0/",
-      "groupName": "non-breaking updates",
+      "groupName": "non-breaking updates"
     },
     {
       "matchUpdateTypes": ["major"],

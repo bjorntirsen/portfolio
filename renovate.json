@@ -1,13 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "automerge": true,
-  "requiredStatusChecks": [
-    "test",
-    "lint",
-    "typecheck",
-    "Vercel Preview Comments",
-    "GitGuardian Security Checks"
-  ],
   "packageRules": [
     {
       "matchDatasources": ["npm"],

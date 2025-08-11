@@ -1,6 +1,6 @@
 # portfolio
 
-Björn Tirsén's portfolio deployed at [www.bjortirsen.se](https://www.bjortirsen.se)
+Björn Tirsén's portfolio deployed at [www.bjorntirsen.se](https://www.bjorntirsen.se)
 
 This is the third version.
 

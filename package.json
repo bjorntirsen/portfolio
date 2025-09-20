@@ -50,8 +50,11 @@
     "typescript": "5.9.2",
     "vitest": "3.2.4"
   },
-  "onlyBuiltDependencies": {
-    "esbuild": true,
-    "sharp": true
-  }
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "sharp"
+    ]
+  },
+  "packageManager": "pnpm@10.17.0"
 }

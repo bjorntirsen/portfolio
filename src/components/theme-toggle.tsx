@@ -10,12 +10,9 @@ export default function ThemeToggle({
 }: React.ComponentPropsWithoutRef<typeof IconButton>) {
   const [mounted, setMounted] = useState(false)
 
-  // Using layout effect for synchronous state updates that affect the UI
   useEffect(() => {
-    // Using a microtask to avoid React hydration warnings
-    queueMicrotask(() => {
-      setMounted(true)
-    })
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true)
   }, [])
 
   const { theme, systemTheme, setTheme } = useTheme()

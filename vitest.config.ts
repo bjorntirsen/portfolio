@@ -9,6 +9,9 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./setupVitest.ts"],
+    coverage: {
+      include: ["src/**.{js,jsx,ts,tsx}"],
+    },
   },
   resolve: {
     alias: {

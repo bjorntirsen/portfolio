@@ -30,7 +30,7 @@
       "matchManagers": ["asdf"],
       "matchPackageNames": ["node"],
       "versioning": "node",
-      "allowedVersions": "<23"
+      "allowedVersions": "<25"
     },
     {
       "matchManagers": ["github-actions"],
@@ -41,13 +41,13 @@
       "matchManagers": ["dockerfile"],
       "matchPackageNames": ["node"],
       "versioning": "node",
-      "allowedVersions": "<23"
+      "allowedVersions": "<25"
     },
     {
       "matchManagers": ["npm"],
       "matchPackageNames": ["@types/node"],
       "versioning": "node",
-      "allowedVersions": "<23"
+      "allowedVersions": "<25"
     }
   ]
 }

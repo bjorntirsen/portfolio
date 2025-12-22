@@ -22,7 +22,7 @@
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "lucide-react": "0.562.0",
-    "next": "16.0.10",
+    "next": "16.1.0",
     "next-themes": "0.4.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -30,19 +30,19 @@
     "tailwindcss-animated": "2.0.0"
   },
   "devDependencies": {
-    "@supabase/supabase-js": "2.87.1",
+    "@supabase/supabase-js": "2.89.0",
     "@tailwindcss/postcss": "4.1.18",
     "@testing-library/jest-dom": "6.9.1",
-    "@testing-library/react": "16.3.0",
-    "@types/node": "24.10.3",
+    "@testing-library/react": "16.3.1",
+    "@types/node": "24.10.4",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.2",
-    "@vitest/coverage-v8": "4.0.15",
+    "@vitest/coverage-v8": "4.0.16",
     "babel-plugin-react-compiler": "^1.0.0",
     "dotenv": "17.2.3",
     "eslint": "9.39.2",
-    "eslint-config-next": "16.0.10",
+    "eslint-config-next": "16.1.0",
     "husky": "^9.1.7",
     "jsdom": "27.3.0",
     "lint-staged": "^16.2.6",
@@ -51,7 +51,7 @@
     "prettier-plugin-tailwindcss": "0.7.2",
     "tailwindcss": "4.1.18",
     "typescript": "5.9.3",
-    "vitest": "4.0.15"
+    "vitest": "4.0.16"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -67,7 +67,7 @@
   "engines": {
     "node": "24.x"
   },
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.26.1",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",

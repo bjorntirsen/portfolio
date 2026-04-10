@@ -5,12 +5,10 @@
   "automerge": true,
   "automergeType": "pr",
   "minimumReleaseAge": "3 days",
-  "prHourlyLimit": 4,
+  "prHourlyLimit": 2,
   "labels": ["dependencies"],
   "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true,
-    "schedule": ["before 5am on monday"]
+    "enabled": false
   },
   "packageRules": [
     {
@@ -18,13 +16,31 @@
       "minimumReleaseAge": "3 days"
     },
     {
-      "matchUpdateTypes": ["patch", "pin", "minor"],
-      "matchCurrentVersion": "!/^0/",
-      "groupName": "non-breaking updates"
-    },
-    {
       "matchManagers": ["github-actions"],
       "groupName": "GitHub Actions updates"
+    },
+    {
+      "matchPackageNames": ["typescript"],
+      "groupName": null,
+      "automerge": false
+    },
+    {
+      "matchPackageNames": ["lucide-react", "vitest", "jsdom", "cypress", "start-server-and-test"],
+      "groupName": "test and UI tooling updates",
+      "automerge": false
+    },
+    {
+      "matchUpdateTypes": ["patch", "pin", "minor"],
+      "matchCurrentVersion": "!/^0/",
+      "excludePackageNames": [
+        "typescript",
+        "lucide-react",
+        "vitest",
+        "jsdom",
+        "cypress",
+        "start-server-and-test"
+      ],
+      "groupName": "non-breaking updates"
     },
     {
       "matchManagers": ["asdf"],

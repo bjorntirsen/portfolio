@@ -37,7 +37,7 @@ jobs:
         id: pnpmv
         run: echo "version=$(jq -r '.packageManager' package.json | cut -d'@' -f2)" >> $GITHUB_OUTPUT
       - name: Install pnpm
-        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+        uses: pnpm/action-setup@903f9c1a6ebcba6cf41d87230be49611ac97822e # v6.0.3
         with:
           version: ${{ steps.pnpmv.outputs.version }}
           run_install: false
@@ -60,7 +60,7 @@ jobs:
         id: pnpmv
         run: echo "version=$(jq -r '.packageManager' package.json | cut -d'@' -f2)" >> $GITHUB_OUTPUT
       - name: Install pnpm
-        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+        uses: pnpm/action-setup@903f9c1a6ebcba6cf41d87230be49611ac97822e # v6.0.3
         with:
           version: ${{ steps.pnpmv.outputs.version }}
           run_install: false
@@ -81,7 +81,7 @@ jobs:
         id: pnpmv
         run: echo "version=$(jq -r '.packageManager' package.json | cut -d'@' -f2)" >> $GITHUB_OUTPUT
       - name: Install pnpm
-        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+        uses: pnpm/action-setup@903f9c1a6ebcba6cf41d87230be49611ac97822e # v6.0.3
         with:
           version: ${{ steps.pnpmv.outputs.version }}
           run_install: false
@@ -103,7 +103,7 @@ jobs:
         id: pnpmv
         run: echo "version=$(jq -r '.packageManager' package.json | cut -d'@' -f2)" >> $GITHUB_OUTPUT
       - name: Install pnpm
-        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+        uses: pnpm/action-setup@903f9c1a6ebcba6cf41d87230be49611ac97822e # v6.0.3
         with:
           version: ${{ steps.pnpmv.outputs.version }}
           run_install: false

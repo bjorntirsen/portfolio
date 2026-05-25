@@ -20,25 +20,9 @@
       "groupName": "GitHub Actions updates"
     },
     {
-      "matchPackageNames": [
-        "vitest",
-        "jsdom",
-        "cypress",
-        "start-server-and-test"
-      ],
-      "groupName": "test tooling updates",
-      "automerge": false
-    },
-    {
       "matchUpdateTypes": ["patch", "pin", "minor"],
       "matchCurrentVersion": "!/^0/",
-      "groupName": "non-breaking updates",
-      "matchPackageNames": [
-        "!vitest",
-        "!jsdom",
-        "!cypress",
-        "!start-server-and-test"
-      ]
+      "groupName": "non-breaking updates"
     },
     {
       "matchManagers": ["asdf"],

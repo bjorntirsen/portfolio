@@ -3,6 +3,8 @@ import localFont from "next/font/local"
 import "./globals.css"
 import { Theme } from "@radix-ui/themes"
 import { ThemeProvider } from "next-themes"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -74,6 +76,8 @@ export default function RootLayout({
         <ThemeProvider attribute="class">
           <Theme accentColor="gray">{children}</Theme>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

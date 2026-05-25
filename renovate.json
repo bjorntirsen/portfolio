@@ -20,10 +20,6 @@
       "groupName": "GitHub Actions updates"
     },
     {
-      "matchPackageNames": ["typescript"],
-      "automerge": false
-    },
-    {
       "matchPackageNames": [
         "vitest",
         "jsdom",
@@ -38,7 +34,6 @@
       "matchCurrentVersion": "!/^0/",
       "groupName": "non-breaking updates",
       "matchPackageNames": [
-        "!typescript",
         "!vitest",
         "!jsdom",
         "!cypress",

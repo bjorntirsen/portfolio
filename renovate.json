@@ -21,7 +21,6 @@
     },
     {
       "matchPackageNames": ["typescript"],
-      "groupName": null,
       "automerge": false
     },
     {

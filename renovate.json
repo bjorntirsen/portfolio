@@ -36,14 +36,14 @@
     {
       "matchUpdateTypes": ["patch", "pin", "minor"],
       "matchCurrentVersion": "!/^0/",
-      "excludePackageNames": [
-        "typescript",
-        "vitest",
-        "jsdom",
-        "cypress",
-        "start-server-and-test"
-      ],
-      "groupName": "non-breaking updates"
+      "groupName": "non-breaking updates",
+      "matchPackageNames": [
+        "!typescript",
+        "!vitest",
+        "!jsdom",
+        "!cypress",
+        "!start-server-and-test"
+      ]
     },
     {
       "matchManagers": ["asdf"],

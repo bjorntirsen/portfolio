@@ -18,8 +18,8 @@ importers:
         specifier: ^10.45.0
         version: 10.56.0(@opentelemetry/core@2.7.1(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.7.1(@opentelemetry/api@1.9.1))(next@16.2.7(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)(webpack@5.105.4(postcss@8.5.15))
       '@supabase/ssr':
-        specifier: 0.9.0
-        version: 0.9.0(@supabase/supabase-js@2.107.0)
+        specifier: 0.12.0
+        version: 0.12.0(@supabase/supabase-js@2.107.0)
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(next@16.2.7(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
@@ -1789,10 +1789,10 @@ packages:
     resolution: {integrity: sha512-cF2KYdR3JIn9YlWGeluY9S0G+otqTdL6hB8GzpatlEIY6fZudCcyFo6Dc3+X9tjeb+x9XcIyNAk9qhNAknjH1A==}
     engines: {node: '>=20.0.0'}
 
-  '@supabase/ssr@0.9.0':
-    resolution: {integrity: sha512-UFY6otYV3yqCgV+AyHj80vNkTvbf1Gas2LW4dpbQ4ap6p6v3eB2oaDfcI99jsuJzwVBCFU4BJI+oDYyhNk1z0Q==}
+  '@supabase/ssr@0.12.0':
+    resolution: {integrity: sha512-d9XV5XzJvzzZbeAIM7fWTCUYxQJZ2Ru6ny3dJHmHGp/LIrJ+o9FpD7N9Rf/UhhWEvHXSoDe8SI32Z2ouOdMjBg==}
     peerDependencies:
-      '@supabase/supabase-js': ^2.97.0
+      '@supabase/supabase-js': ^2.108.0
 
   '@supabase/storage-js@2.107.0':
     resolution: {integrity: sha512-/X8OOVwKBn8aVKuHAGOz2yLA0d2OauqhVuy4mNtN+o7wttHOgx1/j+pqOzlsjmhOHrYykF6AJNZhs3gKZzcMUw==}
@@ -5923,7 +5923,7 @@ snapshots:
       '@supabase/phoenix': 0.4.2
       tslib: 2.8.1
 
-  '@supabase/ssr@0.9.0(@supabase/supabase-js@2.107.0)':
+  '@supabase/ssr@0.12.0(@supabase/supabase-js@2.107.0)':
     dependencies:
       '@supabase/supabase-js': 2.107.0
       cookie: 1.1.1

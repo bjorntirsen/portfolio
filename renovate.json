@@ -46,6 +46,12 @@
       "matchPackageNames": ["@types/node"],
       "versioning": "node",
       "allowedVersions": "<25"
+    },
+    {
+      "description": "Hold TypeScript on 6.x until 7.1 lands with typescript-eslint support",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<7"
     }
   ]
 }

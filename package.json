@@ -24,8 +24,8 @@
     "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "lucide-react": "1.30.0",
-    "next": "16.3.0",
+    "lucide-react": "1.31.0",
+    "next": "16.3.1",
     "next-themes": "0.4.6",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -33,9 +33,9 @@
     "tailwindcss-animated": "2.1.0"
   },
   "devDependencies": {
-    "@supabase/supabase-js": "2.112.2",
+    "@supabase/supabase-js": "2.112.3",
     "@tailwindcss/postcss": "4.3.3",
-    "@testing-library/jest-dom": "7.0.0",
+    "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.2",
     "@types/node": "24.13.3",
     "@types/react": "19.2.18",
@@ -45,7 +45,7 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "dotenv": "17.4.2",
     "eslint": "10.8.1",
-    "eslint-config-next": "16.3.0",
+    "eslint-config-next": "16.3.1",
     "husky": "^9.1.7",
     "jsdom": "30.0.1",
     "lint-staged": "^17.0.0",
@@ -59,7 +59,7 @@
   "engines": {
     "node": "24.x"
   },
-  "packageManager": "pnpm@11.20.0",
+  "packageManager": "pnpm@11.21.0",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",

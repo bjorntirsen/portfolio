@@ -10,7 +10,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ["./setupVitest.ts"],
     coverage: {
-      include: ["src/**.{js,jsx,ts,tsx}"],
+      include: ["src/**/*.{js,jsx,ts,tsx}"],
     },
   },
   resolve: {

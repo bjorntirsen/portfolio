@@ -21,6 +21,13 @@
       "groupName": "non-breaking updates"
     },
     {
+      "description": "vitest and its plugins must share a major version",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["vitest", "@vitest/**"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "vitest major"
+    },
+    {
       "matchManagers": ["github-actions"],
       "groupName": "GitHub Actions updates"
     },

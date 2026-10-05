@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "update:data": "tsc update-data.ts --outDir dist && node dist/update-data.js",
@@ -33,6 +34,7 @@
     "tailwindcss-animated": "2.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@supabase/supabase-js": "2.117.2",
     "@tailwindcss/postcss": "4.3.3",
     "@testing-library/jest-dom": "7.0.1",

@@ -119,4 +119,10 @@ jobs:
       # Verifies the deployment artifact itself: the base image, the pnpm
       # install, and the standalone output. Never pushed, only built.
       - name: Build image
-        run: docker build --progress=plain -t portfolio:ci .
+        # Dummy values so the build succeeds; project fetching fails gracefully
+        run: >-
+          docker build --progress=plain -t portfolio:ci
+          --build-arg SUPABASE_URL=http://127.0.0.1:54321
+          --build-arg NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321
+          --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=dummy
+          .

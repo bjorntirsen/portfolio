@@ -2,6 +2,7 @@ import { withSentryConfig } from "@sentry/nextjs/config"
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   images: {
     remotePatterns: [
       {
@@ -23,6 +24,10 @@ export default withSentryConfig(nextConfig, {
 
   project: "portfolio",
 
+  // Set by the Dockerfile from the deployed commit. Without it the plugin looks
+  // for a git repo, finds none in the image, and names the release "undefined".
+  release: { name: process.env.SENTRY_RELEASE || undefined },
+
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
 
@@ -39,12 +44,6 @@ export default withSentryConfig(nextConfig, {
   tunnelRoute: "/monitoring",
 
   webpack: {
-    // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-    // See the following for more information:
-    // https://docs.sentry.io/product/crons/
-    // https://vercel.com/docs/cron-jobs
-    automaticVercelMonitors: true,
-
     // Tree-shaking options for reducing bundle size
     treeshake: {
       // Automatically tree-shake Sentry logger statements to reduce bundle size

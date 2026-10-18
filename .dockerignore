@@ -1,0 +1,36 @@
+# Without this, `COPY . .` in the builder stage copies the developer's
+# node_modules over the Linux ones installed in the deps stage, including
+# platform-native binaries like sharp. Keep this list in step with .gitignore.
+node_modules
+.next
+out
+build
+coverage
+dist
+dev-data
+test-results
+playwright-report
+
+.git
+.github
+.gitignore
+
+# Local tooling and agent configuration, none of it needed to build
+.claude
+.husky
+
+# Secrets never belong in the build context
+.env*
+
+# Not read by the build
+Dockerfile
+.dockerignore
+docs
+local-files
+README.md
+update-data.ts
+script-utils.ts
+
+.DS_Store
+*.pem
+*.tsbuildinfo

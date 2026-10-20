@@ -66,4 +66,4 @@ docker run -p 3000:3000 -e DATABASE_URL=... portfolio
 
 ## Database
 
-PostgreSQL 18 on the same Coolify server, backed up daily to S3. The schema lives in [`db/schema.sql`](db/schema.sql). The app connects as `portfolio_app`, which may only read; edit data as the `portfolio` owner role, e.g. with `psql` inside the container. To set up a fresh database, run [`db/dev/roles.sql`](db/dev/roles.sql) with a strong password, then apply `db/schema.sql` and restore the latest backup's data.
+PostgreSQL 18 on the same Coolify server, backed up daily to S3. The schema lives in [`db/schema.sql`](db/schema.sql). The app connects as `portfolio_app`, which may only read; edit data as the `portfolio` owner role, e.g. with `psql` inside the container. To set up a fresh database, run [`db/dev/roles.sql`](db/dev/roles.sql) with a strong `PASSWORD` added, then apply `db/schema.sql` and restore the latest backup's data.

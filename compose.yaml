@@ -4,8 +4,10 @@ services:
     image: postgres:18-alpine
     environment:
       POSTGRES_USER: portfolio
-      POSTGRES_PASSWORD: portfolio
       POSTGRES_DB: portfolio
+      # No passwords: the port is only bound to 127.0.0.1, and the app role is
+      # still limited to reading by its grants.
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "127.0.0.1:5432:5432"
     volumes:

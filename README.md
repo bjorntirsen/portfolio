@@ -26,21 +26,28 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 pnpm i
 ```
 
-4. Copy `.env.local-template` to `.env.local` and set `DATABASE_URL`. The database only listens on Coolify's internal network, so reach it through an SSH tunnel to the container:
+4. Copy `.env.local-template` to `.env.local` and start the local database (needs Docker):
+
+```bash
+cp .env.local-template .env.local
+pnpm db:up
+```
+
+It applies `db/schema.sql` and some mock projects from `db/dev/seed.sql` on first start. `pnpm db:reset` wipes it and starts over, `pnpm db:down` stops it.
+
+To work against the production data instead, open an SSH tunnel to the Coolify database container, which only listens on Coolify's internal network:
 
 ```bash
 ssh -N -L 5433:$(ssh <vps> docker inspect -f '{{.NetworkSettings.Networks.coolify.IPAddress}}' <db-container>):5432 <vps>
 ```
 
-and use `postgres://portfolio_app:<password>@localhost:5433/portfolio`. Without it the page renders, only with no projects.
+and set `DATABASE_URL=postgres://portfolio_app:<password>@localhost:5433/portfolio`.
 
 5. Run the development server:
 
 ```bash
 pnpm dev
 ```
-
-6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Deployment
 
@@ -59,13 +66,4 @@ docker run -p 3000:3000 -e DATABASE_URL=... portfolio
 
 ## Database
 
-PostgreSQL 18 on the same Coolify server, backed up daily to S3. The schema lives in [`db/schema.sql`](db/schema.sql). The app connects as `portfolio_app`, which may only read; edit data as the `portfolio` owner role, e.g. with `psql` inside the container. To set up a fresh database, create the app role first:
-
-```sql
-CREATE ROLE portfolio_app LOGIN PASSWORD '...';
-REVOKE ALL ON DATABASE portfolio FROM PUBLIC;
-GRANT CONNECT ON DATABASE portfolio TO portfolio_app;
-GRANT USAGE ON SCHEMA public TO portfolio_app;
-```
-
-then apply `db/schema.sql` and restore the latest backup's data.
+PostgreSQL 18 on the same Coolify server, backed up daily to S3. The schema lives in [`db/schema.sql`](db/schema.sql). The app connects as `portfolio_app`, which may only read; edit data as the `portfolio` owner role, e.g. with `psql` inside the container. To set up a fresh database, run [`db/dev/roles.sql`](db/dev/roles.sql) with a strong `PASSWORD` added, then apply `db/schema.sql` and restore the latest backup's data.

@@ -24,6 +24,7 @@ playwright-report
 
 # Not read by the build
 Dockerfile
+compose.yaml
 .dockerignore
 docs
 local-files

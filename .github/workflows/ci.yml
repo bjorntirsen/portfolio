@@ -112,6 +112,20 @@ jobs:
       - name: Run test coverage
         run: pnpm test:coverage
 
+  db:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Applies db/schema.sql and the dev seed to a fresh database, so a broken
+      # schema fails here rather than the next time a database is rebuilt.
+      - name: Start database
+        run: docker compose up -d --wait
+      - name: Read seed data as the app role
+        run: >-
+          docker compose exec -T db
+          psql -U portfolio_app -d portfolio -v ON_ERROR_STOP=1
+          -c "select count(*) from projects join images on images.project_id = projects.id"
+
   docker:
     runs-on: ubuntu-latest
     steps:

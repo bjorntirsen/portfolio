@@ -51,7 +51,7 @@ pnpm dev
 
 ## Deployment
 
-The [Deploy workflow](.github/workflows/deploy.yml) runs after CI passes on `master`: it builds the `Dockerfile` (Next.js `standalone` output), pushes it to `ghcr.io/bjorntirsen/portfolio`, and asks Coolify to deploy it. The VPS only pulls and runs the image; building there ran it out of memory.
+The `deploy` job in [CI](.github/workflows/ci.yml) runs on pushes to `master` once every other job has passed: it builds the `Dockerfile` (Next.js `standalone` output), pushes it to `ghcr.io/bjorntirsen/portfolio`, and asks Coolify to deploy it. The VPS only pulls and runs the image; building there ran it out of memory.
 
 - Coolify runs the app as a **Docker Image** resource on `ghcr.io/bjorntirsen/portfolio:latest`, with Auto Deploy off. Every image is also tagged with its commit, so rolling back means pointing Coolify at an older tag.
 - The homepage is statically generated and revalidated on demand. `DIRECTUS_URL`, `DIRECTUS_TOKEN` and `REVALIDATE_SECRET` are runtime variables on the Coolify resource. The build gets `DIRECTUS_URL` and `DIRECTUS_TOKEN` too (the token as a build secret), or the first build serves the bundled copy until the next revalidation.

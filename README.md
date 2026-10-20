@@ -51,11 +51,11 @@ pnpm dev
 
 ## Deployment
 
-Deployed to a Coolify VPS from the `Dockerfile` (Next.js `standalone` output). Coolify settings that matter:
+The `deploy` job in [CI](.github/workflows/ci.yml) runs on pushes to `master` once every other job has passed: it builds the `Dockerfile` (Next.js `standalone` output), pushes it to `ghcr.io/bjorntirsen/portfolio`, and asks Coolify to deploy it. The VPS only pulls and runs the image; building there ran it out of memory.
 
+- Coolify runs the app as a **Docker Image** resource on `ghcr.io/bjorntirsen/portfolio:latest`, with Auto Deploy off. Every image is also tagged with its commit, so rolling back means pointing Coolify at an older tag.
 - `DATABASE_URL` is a runtime variable pointing at the Coolify Postgres resource's internal URL, using the read-only `portfolio_app` role. The home page is rendered per request, so the build needs no database and data changes show up without a redeploy.
-- `SENTRY_AUTH_TOKEN` should be a Docker build secret, not a build variable, so it stays out of the deploy log and `docker history`.
-- **Include Source Commit in Build** must be on so Sentry source maps are uploaded under the deployed commit.
+- Repository secrets: `SENTRY_AUTH_TOKEN` (source map upload, passed as a build secret), `COOLIFY_WEBHOOK` (the resource's deploy webhook URL) and `COOLIFY_TOKEN` (a Coolify API token allowed to deploy). Without the Coolify ones the workflow still publishes the image but deploys nothing.
 
 Build and run the image locally with:
 

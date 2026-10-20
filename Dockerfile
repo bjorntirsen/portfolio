@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 # Keep the major in sync with .nvmrc and package.json's engines.node.
 FROM node:24-slim AS base
 
@@ -18,22 +19,19 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 # Makes the Sentry plugin print its upload log, so a failed source map upload
-# shows up in the Coolify deploy log instead of passing silently.
+# shows up in the build log instead of passing silently.
 ENV CI=true
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# SENTRY_AUTH_TOKEN is deliberately not an ARG: Coolify passes it as a BuildKit
-# secret mounted into the RUN below, which keeps it out of the image history.
-# Without it the build still passes, only the source map upload is skipped.
+# SENTRY_AUTH_TOKEN is a BuildKit secret rather than an ARG, which keeps it out
+# of the image history. Without it the build still passes, only the source map
+# upload is skipped.
 # .dockerignore excludes .git, so the Sentry plugin has no commit to derive a
-# release name from. Coolify exposes the deployed commit as SOURCE_COMMIT;
-# SENTRY_RELEASE wins when both are given.
+# release name from; the deploy workflow passes it as SENTRY_RELEASE.
 ARG SENTRY_RELEASE
-ARG SOURCE_COMMIT
-# Resolved inside the RUN rather than with ENV, so that a value passed as a
-# BuildKit secret instead of a build arg still wins.
 # Runs next directly, so this stage needs no pnpm of its own.
-RUN SENTRY_RELEASE="${SENTRY_RELEASE:-$SOURCE_COMMIT}" node_modules/.bin/next build
+RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN,env=SENTRY_AUTH_TOKEN \
+  node_modules/.bin/next build
 
 FROM base AS runner
 WORKDIR /app

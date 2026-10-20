@@ -1,0 +1,24 @@
+# Local development database. Start it with `pnpm db:up`; see README.
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: portfolio
+      POSTGRES_DB: portfolio
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      # Run in name order, only when the data volume is empty.
+      - ./db/dev/roles.sql:/docker-entrypoint-initdb.d/10-roles.sql:ro
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/20-schema.sql:ro
+      - ./db/dev/seed.sql:/docker-entrypoint-initdb.d/30-seed.sql:ro
+      - db-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "portfolio", "-d", "portfolio"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
+volumes:
+  db-data:

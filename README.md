@@ -29,6 +29,7 @@ pnpm i
 4. Copy `.env.local-template` to `.env.local` and start the local database (needs Docker):
 
 ```bash
+cp .env.local-template .env.local
 pnpm db:up
 ```
 

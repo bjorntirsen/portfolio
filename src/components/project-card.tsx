@@ -1,3 +1,9 @@
+"use client"
+
+// A client component because `Theme asChild` clones its child: when the card
+// came from a server component after an await, the dev server passed it to
+// the client `Theme` unresolved, so it rendered nothing and hydration failed.
+
 import Image from "next/image"
 import {
   Card,

@@ -7,6 +7,9 @@ import * as Sentry from "@sentry/nextjs"
 Sentry.init({
   dsn: "https://fd438d5c046eb43994c075c4df3dc69b@o4511077606293504.ingest.de.sentry.io/4511077613240400",
 
+  // Only report from production builds, so local development stays out of Sentry.
+  enabled: process.env.NODE_ENV === "production",
+
   // Add optional integrations for additional features
   integrations: [Sentry.replayIntegration()],
 

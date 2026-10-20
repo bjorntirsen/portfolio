@@ -22,12 +22,6 @@ RUN apt-get update \
 ENV CI=true
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# The home page is statically generated from Supabase at build time, and
-# NEXT_PUBLIC_* values are inlined into the client bundle, so these must be
-# present during the build, not only at runtime.
-ARG SUPABASE_URL
-ARG NEXT_PUBLIC_SUPABASE_URL
-ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
 # SENTRY_AUTH_TOKEN is deliberately not an ARG: Coolify passes it as a BuildKit
 # secret mounted into the RUN below, which keeps it out of the image history.
 # Without it the build still passes, only the source map upload is skipped.

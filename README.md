@@ -26,30 +26,46 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 pnpm i
 ```
 
-4. Run the development server:
+4. Copy `.env.local-template` to `.env.local` and set `DATABASE_URL`. The database only listens on Coolify's internal network, so reach it through an SSH tunnel to the container:
+
+```bash
+ssh -N -L 5433:$(ssh <vps> docker inspect -f '{{.NetworkSettings.Networks.coolify.IPAddress}}' <db-container>):5432 <vps>
+```
+
+and use `postgres://portfolio_app:<password>@localhost:5433/portfolio`. Without it the page renders, only with no projects.
+
+5. Run the development server:
 
 ```bash
 pnpm dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Deployment
 
 Deployed to a Coolify VPS from the `Dockerfile` (Next.js `standalone` output). Coolify settings that matter:
 
-- `SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` must be available at build time: the home page is prerendered from Supabase during the build. Since it is static, changes to project data need a redeploy.
+- `DATABASE_URL` is a runtime variable pointing at the Coolify Postgres resource's internal URL, using the read-only `portfolio_app` role. The home page is rendered per request, so the build needs no database and data changes show up without a redeploy.
 - `SENTRY_AUTH_TOKEN` should be a Docker build secret, not a build variable, so it stays out of the deploy log and `docker history`.
 - **Include Source Commit in Build** must be on so Sentry source maps are uploaded under the deployed commit.
-- A daily scheduled task hits `/api/keep-alive` so the free-tier Supabase project is not paused:
-
-```sh
-node -e "fetch('http://localhost:3000/api/keep-alive').then(r=>process.exit(r.ok?0:1))"
-```
 
 Build and run the image locally with:
 
 ```sh
-docker build -t portfolio --build-arg SUPABASE_URL=... --build-arg NEXT_PUBLIC_SUPABASE_URL=... --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=... .
-docker run -p 3000:3000 -e SUPABASE_URL=... -e NEXT_PUBLIC_SUPABASE_URL=... -e NEXT_PUBLIC_SUPABASE_ANON_KEY=... portfolio
+docker build -t portfolio .
+docker run -p 3000:3000 -e DATABASE_URL=... portfolio
 ```
+
+## Database
+
+PostgreSQL 18 on the same Coolify server, backed up daily to S3. The schema lives in [`db/schema.sql`](db/schema.sql). The app connects as `portfolio_app`, which may only read; edit data as the `portfolio` owner role, e.g. with `psql` inside the container. To set up a fresh database, create the app role first:
+
+```sql
+CREATE ROLE portfolio_app LOGIN PASSWORD '...';
+REVOKE ALL ON DATABASE portfolio FROM PUBLIC;
+GRANT CONNECT ON DATABASE portfolio TO portfolio_app;
+GRANT USAGE ON SCHEMA public TO portfolio_app;
+```
+
+then apply `db/schema.sql` and restore the latest backup's data.

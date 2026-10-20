@@ -28,8 +28,7 @@ Dockerfile
 docs
 local-files
 README.md
-update-data.ts
-script-utils.ts
+db
 
 .DS_Store
 *.pem

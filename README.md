@@ -49,8 +49,6 @@ and set `DATABASE_URL=postgres://portfolio_app:<password>@localhost:5433/portfol
 pnpm dev
 ```
 
-6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 ## Deployment
 
 Deployed to a Coolify VPS from the `Dockerfile` (Next.js `standalone` output). Coolify settings that matter:

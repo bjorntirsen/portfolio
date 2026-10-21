@@ -2,7 +2,7 @@
 
 Björn Tirsén's portfolio deployed at [www.bjorntirsen.se](https://www.bjorntirsen.se)
 
-This is the third version.
+This is the fourth version. The previous one (Next.js + Supabase) is tagged [`v3.0`](https://github.com/bjorntirsen/portfolio/tree/v3.0).
 
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=bjorntirsen_portfolio&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=bjorntirsen_portfolio)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=bjorntirsen_portfolio&metric=bugs)](https://sonarcloud.io/summary/new_code?id=bjorntirsen_portfolio)
@@ -14,7 +14,7 @@ This is the third version.
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=bjorntirsen_portfolio&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=bjorntirsen_portfolio)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bjorntirsen_portfolio&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=bjorntirsen_portfolio)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Built with [Next.js](https://nextjs.org) and Tailwind CSS. The homepage is statically built from typed content data in [`src/content/`](src/content/): `getContent()` is the single entry point, so a CMS can replace the data without touching the section components in `src/blocks/`. The design source and handoff notes live in [`docs/design/`](docs/design/).
 
 ## Run locally
 
@@ -26,7 +26,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 pnpm i
 ```
 
-4. Copy `.env.local-template` to `.env.local` and start the local database (needs Docker):
+4. Optional: the homepage doesn't use the database, but the legacy project code in `src/utils/` does. To work on that, copy `.env.local-template` to `.env.local` and start the local database (needs Docker):
 
 ```bash
 cp .env.local-template .env.local
@@ -53,7 +53,7 @@ pnpm dev
 
 Deployed to a Coolify VPS from the `Dockerfile` (Next.js `standalone` output). Coolify settings that matter:
 
-- `DATABASE_URL` is a runtime variable pointing at the Coolify Postgres resource's internal URL, using the read-only `portfolio_app` role. The home page is rendered per request, so the build needs no database and data changes show up without a redeploy.
+- The homepage is static, so content changes need a redeploy. `DATABASE_URL` is a runtime variable pointing at the Coolify Postgres resource's internal URL, using the read-only `portfolio_app` role; only the legacy project code in `src/utils/` uses it.
 - `SENTRY_AUTH_TOKEN` should be a Docker build secret, not a build variable, so it stays out of the deploy log and `docker history`.
 - **Include Source Commit in Build** must be on so Sentry source maps are uploaded under the deployed commit.
 

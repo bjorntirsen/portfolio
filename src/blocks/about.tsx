@@ -1,35 +1,35 @@
-import Image from "next/image"
-import { Heading, Text } from "@radix-ui/themes"
+import type { SiteCopy } from "@/content"
 
-export default function About() {
+interface AboutProps {
+  about: SiteCopy["about"]
+}
+
+export default function About({ about }: AboutProps) {
   return (
-    <section id="about" className="mb-12">
-      <div className="mb-8 flex flex-col items-center">
-        <div className="relative mb-4 size-32 overflow-hidden rounded-full">
-          <Image
-            src="/profile.jpeg"
-            alt="Björn Tirsén"
-            fill
-            sizes="128px"
-            className="object-cover"
-          />
-        </div>
-        <Heading>The Portfolio of Björn Tirsén</Heading>
-        <Text className="text-center">
-          Full stack developer with a passion for building fast, accessible web
-          apps.
-        </Text>
+    <section
+      id="about"
+      className="mx-auto grid max-w-[1360px] grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-12 px-5 py-30 sm:px-10"
+    >
+      <p className="font-mono text-sm text-muted">{about.caption}</p>
+      <div className="flex flex-col gap-6 text-xl leading-[1.55] text-body">
+        <p className="text-[30px] leading-[1.25] font-semibold text-fg">
+          {about.lead}
+        </p>
+        {about.paragraphs.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
       </div>
-      <div className="mx-auto max-w-2xl text-center">
-        <Text as="p" mb="2">
-          Hello! I&#39;m a passionate full stack developer with 3 years of
-          experience in building web applications. I specialize in React,
-          Node.js, and everything connected to the web.
-        </Text>
-        <Text as="p" mb="2">
-          When I&#39;m not coding, I like to spend time with the family, run and
-          lift weights, read and watch movies.
-        </Text>
+      <div className="flex flex-col gap-4">
+        <h3 className="font-mono text-[13px] tracking-[0.08em] text-muted uppercase">
+          {about.off_the_clock_heading}
+        </h3>
+        <ul className="flex flex-col text-[22px]">
+          {about.off_the_clock.map((item) => (
+            <li key={item} className="border-b border-line py-3">
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

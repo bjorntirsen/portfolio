@@ -1,25 +1,33 @@
-import About from "@/blocks/about"
+import { getContent } from "@/content"
 import Header from "@/components/header"
+import Hero from "@/blocks/hero"
+import StackBand from "@/blocks/stack-band"
+import Areas from "@/blocks/areas"
+import Experience from "@/blocks/experience"
+import About from "@/blocks/about"
 import Projects from "@/blocks/projects"
+import Archive from "@/blocks/archive"
 import Contact from "@/blocks/contact"
-
-// Projects are read from Postgres per request. The database is only reachable
-// on Coolify's internal network, which the image build has no access to.
-export const dynamic = "force-dynamic"
+import Footer from "@/blocks/footer"
 
 export default async function Page() {
-  return (
-    <div className="flex min-h-screen flex-col bg-[var(--accent-3)]">
-      <Header />
-      <main className="container mx-auto grow px-4 py-8">
-        <About />
-        <Projects />
-        <Contact />
-      </main>
+  const { site, areas, experience, projects, archive } = await getContent()
 
-      <footer className="text-muted-foreground border-t py-4 text-center text-sm">
-        © {new Date().getFullYear()} Björn Tirsén. All rights reserved.
-      </footer>
-    </div>
+  return (
+    <>
+      <Header site={site} />
+      <main>
+        <Hero hero={site.hero} />
+        <StackBand stack={site.stack} />
+        <Areas copy={site.areas_section} areas={areas} />
+        <Experience copy={site.experience_section} entries={experience} />
+        <About about={site.about} />
+        <Projects copy={site.projects_section} projects={projects}>
+          <Archive copy={site.archive_section} items={archive} />
+        </Projects>
+        <Contact contact={site.contact} />
+      </main>
+      <Footer footer={site.footer} />
+    </>
   )
 }

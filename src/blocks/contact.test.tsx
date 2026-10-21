@@ -2,22 +2,30 @@ import { render, screen } from "@testing-library/react"
 import { expect, test } from "vitest"
 import Contact from "./contact"
 
-test("Contact section renders with links and heading", () => {
-  render(<Contact />)
-
-  expect(screen.getByRole("heading", { name: "Let's Connect" })).toBeDefined()
-
-  expect(
-    screen.getByText(/Feel free to reach out for collaborations/i),
-  ).toBeDefined()
-
-  expect(screen.getByRole("link", { name: /GitHub/i })).toHaveAttribute(
-    "href",
-    "https://github.com/johndoe",
+test("Contact section renders heading, text and links", () => {
+  render(
+    <Contact
+      contact={{
+        caption: "05 — Contact",
+        heading: "Say hej",
+        text: "Always happy to talk.",
+        links: [
+          {
+            id: "github",
+            sort: 1,
+            label: "GitHub",
+            href: "https://github.com/example",
+            arrow: "↗",
+          },
+        ],
+      }}
+    />,
   )
 
-  expect(screen.getByRole("link", { name: /LinkedIn/i })).toHaveAttribute(
+  expect(screen.getByRole("heading", { name: "Say hej." })).toBeDefined()
+  expect(screen.getByText("Always happy to talk.")).toBeDefined()
+  expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute(
     "href",
-    "https://linkedin.com/in/johndoe",
+    "https://github.com/example",
   )
 })

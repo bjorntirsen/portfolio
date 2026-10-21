@@ -1,46 +1,43 @@
 import { fireEvent, render, screen } from "@testing-library/react"
-import { Theme } from "@radix-ui/themes"
-import { beforeEach, expect, test, vi } from "vitest"
+import { afterEach, expect, test } from "vitest"
 import ThemeToggle from "./theme-toggle"
 
-const setTheme = vi.fn()
-const useTheme = vi.fn()
-
-vi.mock("next-themes", () => ({
-  useTheme: () => useTheme(),
-}))
-
-beforeEach(() => {
-  setTheme.mockReset()
+afterEach(() => {
+  delete document.documentElement.dataset.theme
+  localStorage.clear()
 })
 
-test.each([
-  { theme: "system", next: "light" },
-  { theme: "light", next: "dark" },
-  { theme: "dark", next: "system" },
-])("ThemeToggle switches from $theme to $next", ({ theme, next }) => {
-  useTheme.mockReturnValue({ theme, systemTheme: "dark", setTheme })
+test("ThemeToggle switches the theme and saves the choice", () => {
+  document.documentElement.dataset.theme = "dark"
   render(
-    <Theme>
-      <ThemeToggle />
-    </Theme>,
+    <ThemeToggle
+      toLightLabel="Switch to light mode"
+      toDarkLabel="Switch to dark mode"
+    />,
   )
 
-  fireEvent.click(screen.getByRole("button", { name: "Toggle theme" }))
+  const button = screen.getByRole("button")
+  expect(button).not.toHaveAttribute("aria-pressed")
 
-  expect(setTheme).toHaveBeenCalledWith(next)
+  fireEvent.click(button)
+
+  expect(document.documentElement.dataset.theme).toBe("light")
+  expect(localStorage.getItem("theme")).toBe("light")
+
+  fireEvent.click(button)
+
+  expect(document.documentElement.dataset.theme).toBe("dark")
+  expect(localStorage.getItem("theme")).toBe("dark")
 })
 
-test("ThemeToggle forwards props to the button", () => {
-  useTheme.mockReturnValue({ theme: "light", systemTheme: "light", setTheme })
+test("ThemeToggle labels describe the action, one per theme", () => {
   render(
-    <Theme>
-      <ThemeToggle data-testid="toggle" />
-    </Theme>,
+    <ThemeToggle
+      toLightLabel="Switch to light mode"
+      toDarkLabel="Switch to dark mode"
+    />,
   )
 
-  expect(screen.getByTestId("toggle")).toHaveAttribute(
-    "aria-label",
-    "Toggle theme",
-  )
+  expect(screen.getByText("Switch to light mode")).toBeDefined()
+  expect(screen.getByText("Switch to dark mode")).toBeDefined()
 })

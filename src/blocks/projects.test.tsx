@@ -1,32 +1,31 @@
 import { render, screen } from "@testing-library/react"
-import { expect, test, vi } from "vitest"
+import { expect, test } from "vitest"
+import type { Project } from "@/content"
+import { siteCopy } from "@/content/data"
 import Projects from "./projects"
-import { ProjectWithCoverImage } from "@/utils/fetch-projects"
 
-const mockedProject: ProjectWithCoverImage = {
-  id: "1",
+const project: Project = {
+  id: "test",
+  sort: 1,
+  label: "#01",
+  date: "2024-01",
+  kind: "Solo",
   title: "Test Project",
   description: "Description",
-  subtitle: "Subtitle",
-  slug: "test-project",
-  created_at: "2023-01-01",
-  images: [],
+  tags: ["React", "Node.js"],
+  repo_url: "https://github.com/example/test",
+  live_url: null,
 }
 
-vi.mock("@/utils/fetch-projects", () => ({
-  fetchProjectsWithCoverImage: vi.fn(() => Promise.resolve([mockedProject])),
-}))
+test("Projects section renders project cards", () => {
+  render(<Projects copy={siteCopy.projects_section} projects={[project]} />)
 
-vi.mock("@/components/project-card", () => ({
-  ProjectCard: ({ project }: { project: ProjectWithCoverImage }) => (
-    <div data-testid="project-card">{project.title}</div>
-  ),
-}))
-
-test("Projects section renders with heading and project cards", async () => {
-  const Component = await Projects()
-  render(Component)
-
-  expect(screen.getByRole("heading", { name: "All Projects" })).toBeDefined()
-  expect(screen.getByTestId("project-card")).toHaveTextContent("Test Project")
+  expect(screen.getByRole("heading", { name: "Projects" })).toBeDefined()
+  expect(screen.getByRole("article")).toHaveTextContent("Test Project")
+  expect(screen.getByText("2024-01 · Solo")).toBeDefined()
+  expect(screen.getByRole("link", { name: "Repo ↗" })).toHaveAttribute(
+    "href",
+    project.repo_url,
+  )
+  expect(screen.queryByRole("link", { name: "Live site ↗" })).toBeNull()
 })

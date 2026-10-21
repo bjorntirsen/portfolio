@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Björn Tirsén — Software Engineer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:var(--fg);text-decoration-thickness:1px;text-underline-offset:4px}
+a:hover{color:var(--accent-ink)}
+.theme-btn:hover{border-color:var(--fg)}
+</style>
+</helmet>
+<div style="--bg: {{t.bg}}; --fg: {{t.fg}}; --body: {{t.body}}; --muted: {{t.muted}}; --line: {{t.line}}; --line-strong: {{t.lineStrong}}; --card: {{t.card}}; --accent: {{accent}}; --accent-ink: {{t.accentInk}}; background: var(--bg); color: var(--fg); font-family: 'Bricolage Grotesque', system-ui, sans-serif; min-height: 100vh; transition: background 200ms, color 200ms">
+
+<!-- Top bar -->
+<header style="max-width: 1360px; margin: 0 auto; padding: 20px 40px; display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.02em">
+<a href="#top" style="text-decoration: none; font-weight: 500">bjorntirsen.se</a>
+<div style="display: flex; align-items: center; gap: 10px; color: var(--muted)">
+<span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block"></span>
+<span>Now: identity platform @ SBAB</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px">
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px 24px">
+<a href="#work" style="text-decoration: none; padding: 12px 0">01 Work</a>
+<a href="#experience" style="text-decoration: none; padding: 12px 0">02 Experience</a>
+<a href="#about" style="text-decoration: none; padding: 12px 0">03 About</a>
+<a href="#projects" style="text-decoration: none; padding: 12px 0">04 Projects</a>
+<a href="#contact" style="text-decoration: none; padding: 12px 0">05 Contact</a>
+</nav>
+<button class="theme-btn" type="button" onClick="{{toggleTheme}}" aria-pressed="{{isLight}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--fg); font-family: 'JetBrains Mono', monospace; font-size: 13px; cursor: pointer">
+<sc-if value="{{isLight}}" hint-placeholder-val="{{ false }}">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+</sc-if>
+<sc-if value="{{isDark}}" hint-placeholder-val="{{ true }}">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+</sc-if>
+<span>{{themeLabel}}</span>
+</button>
+</div>
+</header>
+
+<!-- Hero -->
+<section id="top" style="max-width: 1360px; margin: 0 auto; padding: 64px 40px 96px; border-bottom: 1px solid var(--line)">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-end; justify-content: space-between">
+<div style="flex: 1 1 560px; min-width: 0">
+<p style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--accent-ink)">~/portfolio — v4.0.0</p>
+<h1 style="margin: 0; font-size: clamp(72px, 12.5vw, 200px); line-height: 0.86; font-weight: 800; letter-spacing: -0.045em">Björn<br>Tirsén<span style="color: var(--accent)">.</span></h1>
+</div>
+<div style="flex: 0 1 300px; aspect-ratio: 4 / 5; border: 1px dashed var(--line-strong); border-radius: 4px; background: var(--card); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 13px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+<span>[YOUR PHOTO]</span>
+</div>
+</div>
+<div style="margin-top: 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 48px; align-items: end">
+<p style="margin: 0; font-size: clamp(22px, 2.2vw, 32px); line-height: 1.3; font-weight: 400; max-width: 34ch">Software engineer in Stockholm. I started in frontend and full stack, moved toward the shared platforms other teams build on, and lately work on identity and authentication.</p>
+<dl style="margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 12px 32px; font-family: 'JetBrains Mono', monospace; font-size: 14px; border-top: 1px solid var(--line); padding-top: 20px">
+<dt style="color: var(--muted)">role</dt><dd style="margin: 0">Software Engineer, SBAB</dd>
+<dt style="color: var(--muted)">focus</dt><dd style="margin: 0; color: var(--accent-ink); font-weight: 500">Full stack &amp; platform engineering</dd>
+<dt style="color: var(--muted)">now</dt><dd style="margin: 0">Identity platform</dd>
+<dt style="color: var(--muted)">based</dt><dd style="margin: 0">Stockholm, Sweden</dd>
+</dl>
+</div>
+</section>
+
+<!-- Stack band -->
+<div style="background: var(--accent); color: #0F100D; overflow: hidden">
+<div style="max-width: 1360px; margin: 0 auto; padding: 18px 40px; display: flex; flex-wrap: wrap; gap: 8px 28px; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em">
+<span>TypeScript</span><span>/</span><span>React</span><span>/</span><span>Node.js</span><span>/</span><span>Java</span><span>/</span><span>Spring</span><span>/</span><span>Express</span><span>/</span><span>Next.js</span><span>/</span><span>OAuth 2.0 + OIDC</span><span>/</span><span>CI/CD</span>
+</div>
+</div>
+
+<!-- What I work on -->
+<section id="work" style="max-width: 1360px; margin: 0 auto; padding: 120px 40px 0">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 32px; border-bottom: 1px solid var(--line)">
+<h2 style="margin: 0; font-size: clamp(48px, 6vw, 88px); font-weight: 800; letter-spacing: -0.035em; line-height: 1">What I work on</h2>
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">01 — Areas, roughly in the order I got to them</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 0">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="4">
+<div style="padding: 32px 28px 40px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent-ink)">{{s.num}}</span>
+<h3 style="margin: 0; font-size: 34px; line-height: 1.05; font-weight: 800; letter-spacing: -0.025em">{{s.title}}</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--body)">{{s.desc}}</p>
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--muted)">{{s.tools}}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- Experience -->
+<section id="experience" style="max-width: 1360px; margin: 0 auto; padding: 120px 40px 0">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 32px">
+<h2 style="margin: 0; font-size: clamp(48px, 6vw, 88px); font-weight: 800; letter-spacing: -0.035em; line-height: 1">Experience</h2>
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">02 — git log, newest first</p>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--fg)">
+<sc-for list="{{experience}}" as="e" hint-placeholder-count="7">
+<li style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px 40px; padding: 32px 0; border-bottom: 1px solid var(--line)">
+<div style="display: flex; flex-direction: column; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+<span style="color: var(--muted)">{{e.period}}</span>
+<sc-if value="{{e.current}}" hint-placeholder-val="{{ false }}"><span style="align-self: flex-start; background: var(--accent); color: #0F100D; padding: 3px 8px; border-radius: 999px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500">Current</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h3 style="margin: 0; font-size: 28px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em">{{e.title}}</h3>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent-ink)">{{e.org}}</span>
+</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--body); grid-column: span 2; min-width: 0">{{e.desc}}</p>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<!-- About -->
+<section id="about" style="max-width: 1360px; margin: 0 auto; padding: 120px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 48px">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">03 — About</p>
+<div style="display: flex; flex-direction: column; gap: 24px; font-size: 20px; line-height: 1.55; color: var(--body)">
+<p style="margin: 0; font-size: 30px; line-height: 1.25; color: var(--fg); font-weight: 600">In the summer of 2019 I found out how much fun it is to code: an idea in the morning, a working program by evening. I haven't stopped since.</p>
+<p style="margin: 0">I came to software the long way round. I worked with automotive diagnostics and customers at Volvo Cars, with manufacturing and continuous improvement at Scania, and spent five years living and working in the UK and France. Fixing cars and production lines turns out to be good training for debugging.</p>
+<p style="margin: 0">To me, technology is half the job. The other half — working through a problem with a team, or explaining something clearly to the people who use it — is at least as interesting, and it's where I do my best work.</p>
+<p style="margin: 0">In code, I care about how easy it is to change: clear structure, no more moving parts than needed, and tooling that helps the next person.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em">Off the clock</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; font-size: 22px">
+<li style="padding: 12px 0; border-bottom: 1px solid var(--line)">Family</li>
+<li style="padding: 12px 0; border-bottom: 1px solid var(--line)">Running</li>
+<li style="padding: 12px 0; border-bottom: 1px solid var(--line)">Lifting heavy things</li>
+<li style="padding: 12px 0; border-bottom: 1px solid var(--line)">Books</li>
+<li style="padding: 12px 0; border-bottom: 1px solid var(--line)">Movies</li>
+</ul>
+</div>
+</section>
+
+<!-- Projects -->
+<section id="projects" style="max-width: 1360px; margin: 0 auto; padding: 0 40px 120px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 32px; border-bottom: 1px solid var(--line)">
+<h2 style="margin: 0; font-size: clamp(48px, 6vw, 88px); font-weight: 800; letter-spacing: -0.035em; line-height: 1">Projects</h2>
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">04 — Personal and school projects</p>
+</div>
+<div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 24px">
+<sc-for list="{{featured}}" as="p" hint-placeholder-count="4">
+<article style="border: 1px solid var(--line); border-radius: 4px; padding: 32px; display: flex; flex-direction: column; gap: 20px; min-height: 340px; background: var(--card)">
+<div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">
+<span style="color: var(--accent-ink)">{{p.num}}</span>
+<span>{{p.date}} · {{p.kind}}</span>
+</div>
+<h3 style="margin: 0; font-size: 44px; line-height: 1; font-weight: 800; letter-spacing: -0.03em">{{p.title}}</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; color: var(--body); flex-grow: 1">{{p.desc}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{p.tags}}" as="t" hint-placeholder-count="3">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 6px 10px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--body)">{{t}}</span>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 14px; border-top: 1px solid var(--line); padding-top: 16px">
+<a href="#">Repo ↗</a>
+<sc-if value="{{p.live}}" hint-placeholder-val="{{ true }}"><a href="#">Live site ↗</a></sc-if>
+</div>
+</article>
+</sc-for>
+</div>
+
+<div style="margin-top: 96px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 24px">
+<h3 style="margin: 0; font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1">Archive</h3>
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">Everything else from the Nackademin years, 2020–2021</p>
+</div>
+<div style="overflow-x: auto; border-top: 1px solid var(--fg)">
+<div style="min-width: 820px; font-family: 'JetBrains Mono', monospace; font-size: 14px">
+<div style="display: grid; grid-template-columns: 120px minmax(0, 1.3fr) minmax(0, 2fr) 120px 140px; gap: 24px; padding: 14px 0; color: var(--muted); border-bottom: 1px solid var(--line); text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em">
+<span>Date</span><span>Project</span><span>Notes</span><span>Type</span><span>Links</span>
+</div>
+<sc-for list="{{archive}}" as="r" hint-placeholder-count="19">
+<div style="display: grid; grid-template-columns: 120px minmax(0, 1.3fr) minmax(0, 2fr) 120px 140px; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: baseline">
+<span style="color: var(--muted)">{{r.date}}</span>
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 600; color: var(--fg)">{{r.title}}</span>
+<span style="color: var(--body); line-height: 1.5">{{r.desc}}</span>
+<span style="color: var(--muted)">{{r.kind}}</span>
+<span style="display: flex; gap: 14px"><a href="#">repo</a><a href="#">notes</a></span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="border-top: 1px solid var(--line)">
+<div style="max-width: 1360px; margin: 0 auto; padding: 120px 40px 96px; display: flex; flex-direction: column; gap: 48px">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">05 — Contact</p>
+<h2 style="margin: 0; font-size: clamp(64px, 11vw, 176px); line-height: 0.9; font-weight: 800; letter-spacing: -0.045em">Say hej<span style="color: var(--accent)">.</span></h2>
+<p style="margin: 0; font-size: clamp(20px, 2vw, 26px); line-height: 1.4; color: var(--body); max-width: 40ch">Always happy to talk about software engineering, platforms, identity — or something else entirely.</p>
+<div style="display: flex; flex-direction: column; border-top: 1px solid var(--fg)">
+<a href="#" style="display: flex; justify-content: space-between; align-items: center; padding: 28px 0; border-bottom: 1px solid var(--line); font-size: clamp(28px, 3.5vw, 48px); font-weight: 600; text-decoration: none"><span>[EMAIL]</span><span aria-hidden="true">→</span></a>
+<a href="#" style="display: flex; justify-content: space-between; align-items: center; padding: 28px 0; border-bottom: 1px solid var(--line); font-size: clamp(28px, 3.5vw, 48px); font-weight: 600; text-decoration: none"><span>GitHub</span><span aria-hidden="true">↗</span></a>
+<a href="#" style="display: flex; justify-content: space-between; align-items: center; padding: 28px 0; border-bottom: 1px solid var(--line); font-size: clamp(28px, 3.5vw, 48px); font-weight: 600; text-decoration: none"><span>LinkedIn</span><span aria-hidden="true">↗</span></a>
+</div>
+</div>
+<footer style="max-width: 1360px; margin: 0 auto; padding: 32px 40px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">
+<span>© 2026 Björn Tirsén · Stockholm</span>
+<span>Built with Next.js · Kept fresh by Renovate</span>
+</footer>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF6A2B","options":["#FF6A2B","#C8F04A","#7CC4FF","#F5D547"]},"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"$preview":{"width":1440,"height":7000}}'>
+class Component extends DCLogic {
+darken(hex, f) {
+const h = String(hex || '#FF6A2B').replace('#', '');
+const n = h.length === 3 ? h.split('').map((c) => c + c).join('') : h.slice(0, 6);
+const ch = [0, 2, 4].map((i) => Math.round(parseInt(n.slice(i, i + 2), 16) * f));
+return '#' + ch.map((v) => Math.max(0, Math.min(255, v)).toString(16).padStart(2, '0')).join('');
+}
+renderVals() {
+const accent = this.props.accent ?? '#FF6A2B';
+const theme = (this.state && this.state.theme) || this.props.theme || 'dark';
+const isLight = theme === 'light';
+const t = isLight
+? { bg: '#F4F2EC', fg: '#141412', body: '#3A3934', muted: '#5E5C55', line: '#D9D6CC', lineStrong: '#B9B6AB', card: '#FBFAF6', accentInk: this.darken(accent, 0.5) }
+: { bg: '#0F100D', fg: '#EDEBE4', body: '#C4C2BA', muted: '#8C8A82', line: '#2A2B26', lineStrong: '#3A3B35', card: '#151612', accentInk: accent };
+const services = [
+{ num: '01', title: 'Full stack',
+desc: 'Where I started, and still home. React and TypeScript in the browser, Node.js or Java behind it, a relational or document database underneath, and features carried from data model to deploy.',
+tools: 'TypeScript · React · Next.js · Node.js · Express · Java · Spring · SQL · MongoDB' },
+{ num: '02', title: 'Platform engineering',
+desc: 'Shared libraries, tooling and infrastructure that many teams depend on at once: dependency management, testing, CI/CD, and keeping a large monorepo modular.',
+tools: 'Monorepos · shared packages · testing · CI/CD' },
+{ num: '03', title: 'Identity & auth',
+desc: 'My newest area. Authentication and digital signing services in Java and Spring, built on OAuth 2.0, OpenID Connect and BankID. Still plenty to learn.',
+tools: 'Java · Spring · OAuth 2.0 · OpenID Connect · BankID' },
+{ num: '04', title: 'Engineering practice',
+desc: 'Less unnecessary complexity, clearer boundaries, and code that is easy to change. A real interest in architecture, worked on from inside the team.',
+tools: 'Maintainability · modularity · code review · collaboration' }
+];
+const experience = [
+{ period: 'Sep 2026 – now', current: true, title: 'Identity Platform', org: 'Software Engineer · SBAB',
+desc: 'Authentication and digital signing for the bank, with Java, Spring, OAuth 2.0, OpenID Connect and Swedish BankID.' },
+{ period: '[START] – Sep 2026', current: false, title: 'Web Platform & Design System', org: 'Software Engineer · SBAB',
+desc: 'Shared platforms, libraries and tooling used by development teams across the bank. Mostly about maintainability: how teams share code and infrastructure, a large TypeScript monorepo, and making a big backend-for-frontend more modular.' },
+{ period: 'Aug 2022 – [END]', current: false, title: 'Public websites', org: 'Software Engineer · SBAB',
+desc: 'Helped start the move to a headless CMS and server-side rendering for the bank’s public websites.' },
+{ period: 'Nov 2021 – Aug 2022', current: false, title: 'Shared web code', org: 'Web Developer (intern first) · Handelsbanken',
+desc: 'On the team behind code shared by about 20 of the bank’s web apps. Migrated reusable components from legacy technology to React without breaking the apps that depended on them, and kept shared dependencies and test tooling up to date.' },
+{ period: '2020 – May 2022', current: false, title: 'Full Stack Open Source', org: 'Nackademin',
+desc: 'Two-year web development program. Most of the projects below come from here.' },
+{ period: '2019', current: false, title: 'Hello, world', org: 'Self-taught',
+desc: 'Discovered programming, plus two evening courses in Java.' },
+{ period: 'Before code', current: false, title: 'Cars, factories, abroad', org: 'Volvo Cars · Scania · UK & France',
+desc: 'Automotive diagnostics and customer service at Volvo Cars, manufacturing and continuous improvement at Scania, and five years living and working in the UK and France.' }
+];
+const featured = [
+{ num: 'v3.0', date: '2025-02', kind: 'Solo', title: 'Portfolio 3.0', live: true,
+desc: 'This site’s previous version. Next.js and Supabase on my first custom domain, with Renovate and GitHub Actions keeping dependencies current.',
+tags: ['Next.js', 'Supabase', 'GitHub Actions', 'Renovate'] },
+{ num: '#02', date: '2021-11', kind: 'Solo', title: 'Couples Expenses', live: true,
+desc: 'Splits shared household expenses month by month. My first TypeScript and Next.js app, responsive from the start.',
+tags: ['TypeScript', 'Next.js', 'Responsive'] },
+{ num: '#03', date: '2021-11', kind: 'Group', title: 'Markdown Reminders', live: false,
+desc: 'A MERN to-do app where every reminder is written in Markdown. Built with a team.',
+tags: ['MongoDB', 'Express', 'React', 'Node.js'] },
+{ num: '#04', date: '2021-10', kind: 'Group', title: 'Cats & Dogs', live: false,
+desc: 'A full MERN webshop for pet supplies, from product catalog to cart. Built with a team.',
+tags: ['MongoDB', 'Express', 'React', 'Node.js'] }
+];
+const archive = [
+['2021-09-20', 'Developing the Developer 2.0', 'Previous portfolio. Create React App, REST API, CSS modules, Bootstrap.', 'Solo'],
+['2021-09-10', 'Portfolio API', 'Express + MongoDB REST API and CMS with a Bootstrap admin.', 'Solo'],
+['2021-07-16', 'Natours', 'Node.js app with maps, payments and photo uploads.', 'Course'],
+['2021-06-26', 'MIB REST API', 'Node.js + MongoDB CRUD API for customer data.', 'Solo'],
+['2021-05-28', 'ManCave', 'PHP, MySQL and EJS webshop. Responsive.', 'Group'],
+['2021-05-12', 'GitLab CI/CD', 'Pipeline that tests a Node.js app and builds a Docker image.', 'Solo'],
+['2021-05-10', 'The Fakestore Creator', 'Paste a product REST API, get a generated store.', 'Solo'],
+['2021-05-05', 'Lego Fakestore API', 'PHP REST API with category and limit filters.', 'Solo'],
+['2021-04-26', 'Björn’s Fakestore', 'First PHP app: a store generated from a REST API.', 'Solo'],
+['2021-03-28', 'Wack', 'Slack-style chat on Node, Express, MongoDB, Socket.IO.', 'Solo'],
+['2021-02-11', 'Yahtzee MongoDB Data', 'MongoDB data model and queries.', 'Group'],
+['2021-02-04', 'Max Video DB', 'MySQL design with views and stored procedures.', 'Solo'],
+['2021-01-17', 'MIB Customer Data', 'React customer data app. Responsive.', 'Solo'],
+['2020-12-20', 'EZORRO!', 'Stock market site in React. Responsive.', 'Group'],
+['2020-11-13', 'Developing the Developer 1.0', 'First portfolio. Retired.', 'Solo'],
+['2020-10-30', 'ACME Events', 'Events site on Local Storage, in Swedish.', 'Group'],
+['2020-10-12', 'JavaScript Quiz', 'Quiz that loads questions from a REST API.', 'Solo'],
+['2020-09-24', 'Yahtzee', 'Browser dice game.', 'Group'],
+['2020-05-31', 'Dice Game', 'Where it started: a small Java game.', 'Solo']
+].map(([date, title, desc, kind]) => ({ date, title, desc, kind }));
+return {
+accent, t, isLight, isDark: !isLight,
+themeLabel: isLight ? 'Dark mode' : 'Light mode',
+toggleTheme: () => this.setState({ theme: isLight ? 'dark' : 'light' }),
+services, experience, featured, archive
+};
+}
+}
+</script>
+</body>
+</html>

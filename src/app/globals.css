@@ -1,3 +1,81 @@
 @import "tailwindcss";
-@import "tailwindcss-animated";
-@import "@radix-ui/themes/styles.css";
+
+/* Theme tokens. Dark is the default; the inline script in the root layout sets
+   data-theme on <html> before first paint (saved choice or prefers-color-scheme). */
+:root {
+  --bg: #0f100d;
+  --fg: #edebe4;
+  --body: #c4c2ba;
+  --muted: #8c8a82;
+  --line: #2a2b26;
+  --line-strong: #3a3b35;
+  --card: #151612;
+  --accent: #ff6a2b;
+  --accent-ink: #ff6a2b;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f4f2ec;
+  --fg: #141412;
+  --body: #3a3934;
+  --muted: #5e5c55;
+  --line: #d9d6cc;
+  --line-strong: #b9b6ab;
+  --card: #fbfaf6;
+  --accent-ink: #803516;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-card: var(--card);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  /* Text on the accent background, the same in both themes */
+  --color-on-accent: #0f100d;
+
+  --font-sans: var(--font-bricolage), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+}
+
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    transition:
+      background 200ms,
+      color 200ms;
+  }
+
+  a {
+    color: var(--fg);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  a:hover {
+    color: var(--accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body {
+      transition: none;
+    }
+  }
+}
+
+/* light:… utilities apply while the light theme is active */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));

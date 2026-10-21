@@ -6,7 +6,7 @@ interface AreasProps {
   areas: Area[]
 }
 
-export default function Areas({ copy, areas }: AreasProps) {
+export default function Areas({ copy, areas }: Readonly<AreasProps>) {
   return (
     <section id="work" className="mx-auto max-w-[1360px] px-5 pt-30 sm:px-10">
       <SectionHeading

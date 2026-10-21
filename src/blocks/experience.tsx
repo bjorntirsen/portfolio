@@ -6,7 +6,10 @@ interface ExperienceProps {
   entries: ExperienceEntry[]
 }
 
-export default function Experience({ copy, entries }: ExperienceProps) {
+export default function Experience({
+  copy,
+  entries,
+}: Readonly<ExperienceProps>) {
   return (
     <section
       id="experience"

@@ -6,7 +6,7 @@ interface HeroProps {
   hero: SiteCopy["hero"]
 }
 
-export default function Hero({ hero }: HeroProps) {
+export default function Hero({ hero }: Readonly<HeroProps>) {
   const nameLines = hero.name.split(/\s+/)
 
   return (
@@ -21,7 +21,7 @@ export default function Hero({ hero }: HeroProps) {
           </p>
           <h1 className="text-[clamp(72px,12.5vw,200px)] leading-[0.86] font-extrabold tracking-[-0.045em]">
             {nameLines.map((line, i) => (
-              <span key={i} className="block">
+              <span key={line} className="block">
                 {line}
                 {i === nameLines.length - 1 && (
                   <span className="text-accent">.</span>

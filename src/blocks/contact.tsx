@@ -4,7 +4,7 @@ interface ContactProps {
   contact: SiteCopy["contact"]
 }
 
-export default function Contact({ contact }: ContactProps) {
+export default function Contact({ contact }: Readonly<ContactProps>) {
   return (
     <section id="contact" className="border-t border-line">
       <div className="mx-auto flex max-w-[1360px] flex-col gap-12 px-5 pt-30 pb-24 sm:px-10">

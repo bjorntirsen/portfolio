@@ -10,7 +10,7 @@ export default function SectionHeading({
   heading,
   caption,
   className,
-}: SectionHeadingProps) {
+}: Readonly<SectionHeadingProps>) {
   return (
     <div
       className={cn(

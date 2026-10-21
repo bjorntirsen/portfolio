@@ -7,7 +7,7 @@ interface HeaderProps {
 
 // Below 640px: site name and an icon-only toggle on one row, the nav as a
 // single horizontally scrolling row under it, and no status line.
-export default function Header({ site }: HeaderProps) {
+export default function Header({ site }: Readonly<HeaderProps>) {
   return (
     <header className="mx-auto flex max-w-[1360px] flex-wrap items-center justify-between gap-x-8 gap-y-3 px-5 py-5 font-mono text-[13px] tracking-[0.02em] max-sm:gap-y-1 max-sm:py-2 sm:px-10">
       <a href="#top" className="font-medium no-underline">

@@ -7,24 +7,24 @@ interface ThemeToggleProps {
   toDarkLabel: string
 }
 
+function toggle() {
+  const root = document.documentElement
+  const next: ThemeName = root.dataset.theme === "light" ? "dark" : "light"
+  root.dataset.theme = next
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, next)
+  } catch {
+    // Storage can be unavailable (private mode, blocked site data)
+  }
+}
+
 // The server can't know the theme, so icon and label are switched with CSS
 // and are right before hydration. Below 640px the button is icon-only and the
 // label stays available to screen readers.
 export default function ThemeToggle({
   toLightLabel,
   toDarkLabel,
-}: ThemeToggleProps) {
-  function toggle() {
-    const root = document.documentElement
-    const next: ThemeName = root.dataset.theme === "light" ? "dark" : "light"
-    root.dataset.theme = next
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, next)
-    } catch {
-      // Storage can be unavailable (private mode, blocked site data)
-    }
-  }
-
+}: Readonly<ThemeToggleProps>) {
   return (
     <button
       type="button"

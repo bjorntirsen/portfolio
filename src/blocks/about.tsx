@@ -4,7 +4,7 @@ interface AboutProps {
   about: SiteCopy["about"]
 }
 
-export default function About({ about }: AboutProps) {
+export default function About({ about }: Readonly<AboutProps>) {
   return (
     <section
       id="about"

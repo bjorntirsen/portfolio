@@ -8,7 +8,11 @@ interface ProjectsProps {
 }
 
 // Archive is passed as children so it stays inside the Projects section
-export default function Projects({ copy, projects, children }: ProjectsProps) {
+export default function Projects({
+  copy,
+  projects,
+  children,
+}: Readonly<ProjectsProps>) {
   return (
     <section
       id="projects"

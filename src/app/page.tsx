@@ -10,6 +10,10 @@ import Archive from "@/blocks/archive"
 import Contact from "@/blocks/contact"
 import Footer from "@/blocks/footer"
 
+// Content edits normally arrive through /api/revalidate; this is a safety net
+// for a missed webhook, and refreshes a page built without Directus access.
+export const revalidate = 3600
+
 export default async function Page() {
   const { site, areas, experience, projects, archive } = await getContent()
 

@@ -166,6 +166,9 @@ importers:
 
   .:
     dependencies:
+      '@directus/sdk':
+        specifier: 27.0.0
+        version: 27.0.0
       '@sentry/nextjs':
         specifier: ^11.4.0
         version: 11.8.0(@babel/core@7.29.7(supports-color@8.1.1))(next@16.4.2(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.64.1)(@types/node@24.19.2)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)(vite@8.0.3(@emnapi/core@1.9.2)(@emnapi/runtime@1.11.3)(@types/node@24.19.2)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))(webpack@5.105.4(lightningcss@1.32.0)(postcss@8.5.30))
@@ -401,6 +404,10 @@ packages:
   '@csstools/css-tokenizer@4.0.2':
     resolution: {integrity: sha512-OoKoR0f76dCY666JlcbhmVTs2drYj1GUXZTYTcbUgJjh9Nv41aFfZ21bPQTERm5+L5cBDo466NltB2lplS5GBw==}
     engines: {node: '>=20.19.0'}
+
+  '@directus/sdk@27.0.0':
+    resolution: {integrity: sha512-aoBjJgU9ewYQiLXQQExoahl5pAJew+BImSJhFOmZbgT5a8SdFwv+NIvIeBKoThmVYNK6BsxpwKGO11aKGvirhQ==}
+    engines: {node: '>=22'}
 
   '@emnapi/core@1.9.2':
     resolution: {integrity: sha512-UC+ZhH3XtczQYfOlu3lNEkdW/p4dsJ1r/bP7H8+rhao3TTTMO1ATq/4DdIi23XuGoFY+Cz0JmCbdVl0hz9jZcA==}
@@ -3644,6 +3651,8 @@ snapshots:
       css-tree: 3.2.1
 
   '@csstools/css-tokenizer@4.0.2': {}
+
+  '@directus/sdk@27.0.0': {}
 
   '@emnapi/core@1.9.2':
     dependencies:

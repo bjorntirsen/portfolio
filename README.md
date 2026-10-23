@@ -69,7 +69,7 @@ docker run -p 3000:3000 -e DATABASE_URL=... portfolio
 
 The content lives in `portfolio_*` collections on [cms.bjorntirsen.se](https://cms.bjorntirsen.se), in the **portfolio** folder. A Directus Flow calls `POST /api/revalidate` on every create, update or delete, so edits show up without a redeploy: the first visit after an edit gets the old page and triggers a rebuild in the background, later visits get the new one. As a safety net the page also revalidates every hour.
 
-[`scripts/directus-setup.mts`](scripts/directus-setup.mts) creates the collections, seeds them from `src/content/data.ts`, and creates a read-only `Portfolio reader` policy, a `Portfolio site` user whose token the app uses, and the revalidate Flow. It only adds what is missing, so it is safe to re-run after adding a field:
+[`scripts/directus-setup.mts`](scripts/directus-setup.mts) creates the collections, seeds them from `src/content/data.ts`, and creates a read-only `Portfolio reader` policy, a `Portfolio site` user whose token the app uses, and the revalidate Flow. It also brands the Directus app with the site's logo, favicon, fonts and theme colors, read from the tokens in `src/app/globals.css`. It only adds what is missing and reapplies the branding, so it is safe to re-run after adding a field or changing a color:
 
 ```bash
 DIRECTUS_URL=https://cms.bjorntirsen.se \

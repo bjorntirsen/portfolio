@@ -1,7 +1,8 @@
 // Creates the portfolio collections in Directus, seeds them from
-// src/content/data.ts, and sets up read access and the revalidate webhook.
-// Safe to re-run: existing collections, fields, items, the reader user and
-// the Flow are left alone.
+// src/content/data.ts, sets up read access and the revalidate webhook, and
+// brands the Directus app to match the site. Safe to re-run: existing
+// collections, fields, items, the reader user and the Flow are left alone,
+// while the branding settings are always reapplied.
 //
 //   DIRECTUS_URL=https://cms.bjorntirsen.se \
 //   DIRECTUS_ADMIN_TOKEN=... \
@@ -13,6 +14,7 @@
 // token to set as DIRECTUS_TOKEN in the app.
 
 import { randomBytes } from "node:crypto"
+import { readFile } from "node:fs/promises"
 import {
   createCollection,
   createDirectus,
@@ -25,6 +27,7 @@ import {
   createUser,
   readCollections,
   readFieldsByCollection,
+  readFiles,
   readFlows,
   readItems,
   readPolicies,
@@ -32,7 +35,9 @@ import {
   readUsers,
   rest,
   staticToken,
+  uploadFiles,
   updateFlow,
+  updateSettings,
   updateSingleton,
 } from "@directus/sdk"
 import {
@@ -67,6 +72,8 @@ const FOLDER = "portfolio"
 const READER_POLICY = "Portfolio reader"
 const READER_NAME = "Portfolio site"
 const FLOW_NAME = "Portfolio: revalidate site"
+const LOGO_TITLE = "bjorntirsen.se mark"
+const FAVICON_TITLE = "bjorntirsen.se favicon"
 
 interface FieldSpec {
   field: string
@@ -563,6 +570,109 @@ async function ensureFlow() {
   console.log(`Created flow ${FLOW_NAME}`)
 }
 
+// Uploads an image to the file library, or reuses the one with the same title
+async function ensureFile(title: string, path: string): Promise<string> {
+  const [file] = await client.request(
+    readFiles({ filter: { title: { _eq: title } }, fields: ["id"], limit: 1 }),
+  )
+  if (file) return file.id
+
+  const form = new FormData()
+  form.append("title", title)
+  const svg = await readFile(new URL(path, import.meta.url))
+  form.append(
+    "file",
+    new Blob([svg], { type: "image/svg+xml" }),
+    path.split("/").at(-1),
+  )
+  const uploaded = await client.request(uploadFiles(form))
+  console.log(`Uploaded ${title}`)
+  return uploaded.id
+}
+
+const fonts = {
+  display: {
+    fontFamily: '"Bricolage Grotesque", system-ui',
+    fontWeight: "800",
+  },
+  title: { fontFamily: '"Bricolage Grotesque", system-ui', fontWeight: "600" },
+  sans: { fontFamily: '"Bricolage Grotesque", system-ui', fontWeight: "400" },
+  monospace: { fontFamily: '"JetBrains Mono", monospace', fontWeight: "500" },
+}
+
+type Tokens = Record<string, string>
+
+// The site's theme tokens are the source of truth: read the custom properties
+// from the :root (dark) and [data-theme="light"] blocks of globals.css.
+async function readTokens(): Promise<{ dark: Tokens; light: Tokens }> {
+  const css = await readFile(
+    new URL("../src/app/globals.css", import.meta.url),
+    "utf8",
+  )
+  const block = (selector: string): Tokens => {
+    const start = css.indexOf(`${selector} {`)
+    if (start === -1) throw new Error(`${selector} not found in globals.css`)
+    const body = css.slice(start, css.indexOf("}", start))
+    return Object.fromEntries(
+      [...body.matchAll(/--([\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [
+        name,
+        value.trim(),
+      ]),
+    )
+  }
+  const dark = block(":root")
+  // The light block only overrides some tokens, like the CSS cascade does
+  return { dark, light: { ...dark, ...block('[data-theme="light"]') } }
+}
+
+const mix = (a: string, b: string) => `color-mix(in srgb, ${a}, ${b} 50%)`
+
+// Directus' background levels, from page to hover. In dark mode cards are
+// lighter than the page, in light mode darker, so the two ends swap.
+function toDirectusTheme(t: Tokens, page: string, panel: string) {
+  return {
+    borderRadius: "4px",
+    background: page,
+    backgroundSubdued: panel,
+    backgroundNormal: mix(t.card, t.line),
+    backgroundAccent: t.line,
+    foreground: t.body,
+    foregroundAccent: t.fg,
+    foregroundSubdued: t.muted,
+    borderColor: t.line,
+    borderColorAccent: t["line-strong"],
+    borderColorSubdued: mix(page, t.line),
+    // --accent-ink is the accent in dark mode and a darker shade in light
+    // mode, for contrast on light backgrounds
+    primary: t["accent-ink"],
+    fonts,
+  }
+}
+
+async function applyBranding() {
+  const { dark, light } = await readTokens()
+  const logo = await ensureFile(LOGO_TITLE, "../docs/design/icon/mark-dark.svg")
+  const favicon = await ensureFile(
+    FAVICON_TITLE,
+    "../docs/design/icon/icon-small.svg",
+  )
+  await client.request(
+    updateSettings({
+      project_name: "bjorntirsen.se",
+      project_descriptor: "Portfolio CMS",
+      // The logo sits on this color, so it matches the favicon tile
+      project_color: dark.bg,
+      project_logo: logo,
+      public_foreground: logo,
+      public_favicon: favicon,
+      public_note: "Content for bjorntirsen.se",
+      theme_dark_overrides: toDirectusTheme(dark, dark.bg, dark.card),
+      theme_light_overrides: toDirectusTheme(light, light.card, light.bg),
+    }),
+  )
+  console.log("Applied branding")
+}
+
 const existing = new Set(
   (await client.request(readCollections())).map((c) => c.collection),
 )
@@ -570,6 +680,7 @@ await ensureCollections(existing)
 await seedContent()
 const token = await ensureReader()
 await ensureFlow()
+await applyBranding()
 
 if (token) {
   console.log(`\nSet DIRECTUS_TOKEN in the app to:\n${token}`)

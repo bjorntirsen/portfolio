@@ -372,6 +372,9 @@ const lists: ListCollection[] = [
 ]
 
 const SITE = "portfolio_site"
+const siteFieldInputs = siteFields.map((spec, index) =>
+  toField(spec, index + 2),
+)
 const collections = [SITE, ...Object.values(listCollections)]
 
 async function ensureCollections(existing: Set<string>) {
@@ -405,13 +408,13 @@ async function ensureCollections(existing: Set<string>) {
             meta: { hidden: true },
             schema: { is_primary_key: true, has_auto_increment: true },
           },
-          ...siteFields.map(toField),
+          ...siteFieldInputs,
         ],
       }),
     )
     console.log(`Created ${SITE}`)
   } else {
-    await addMissingFields(SITE, siteFields.map(toField))
+    await addMissingFields(SITE, siteFieldInputs)
   }
 
   for (const [index, list] of lists.entries()) {

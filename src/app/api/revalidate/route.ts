@@ -6,7 +6,7 @@ const digest = (value: string) => createHash("sha256").update(value).digest()
 
 // Called by the Directus Flow that scripts/directus-setup.mts creates, whenever
 // a portfolio item is created, updated or deleted.
-export async function POST(request: Request) {
+export function POST(request: Request) {
   const secret = process.env.REVALIDATE_SECRET
   const auth = request.headers.get("authorization") ?? ""
   if (!secret || !timingSafeEqual(digest(auth), digest(`Bearer ${secret}`))) {

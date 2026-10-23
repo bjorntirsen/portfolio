@@ -14,7 +14,7 @@ This is the fourth version. The previous one (Next.js + Supabase) is tagged [`v3
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=bjorntirsen_portfolio&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=bjorntirsen_portfolio)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bjorntirsen_portfolio&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=bjorntirsen_portfolio)
 
-Built with [Next.js](https://nextjs.org) and Tailwind CSS. The homepage is statically built from typed content data in [`src/content/`](src/content/): `getContent()` is the single entry point, so a CMS can replace the data without touching the section components in `src/blocks/`. The design source and handoff notes live in [`docs/design/`](docs/design/).
+Built with [Next.js](https://nextjs.org) and Tailwind CSS. The homepage content is edited in [Directus](https://cms.bjorntirsen.se) and read through `getContent()` in [`src/content/`](src/content/), the single entry point for the section components in `src/blocks/`. Without Directus credentials, or when Directus can't be reached, it falls back to the bundled copy in [`src/content/data.ts`](src/content/data.ts). The design source and handoff notes live in [`docs/design/`](docs/design/).
 
 ## Run locally
 
@@ -53,7 +53,8 @@ pnpm dev
 
 Deployed to a Coolify VPS from the `Dockerfile` (Next.js `standalone` output). Coolify settings that matter:
 
-- The homepage is static, so content changes need a redeploy. `DATABASE_URL` is a runtime variable pointing at the Coolify Postgres resource's internal URL, using the read-only `portfolio_app` role; only the legacy project code in `src/utils/` uses it.
+- The homepage is statically generated and revalidated on demand. `DIRECTUS_URL`, `DIRECTUS_TOKEN` and `REVALIDATE_SECRET` are runtime variables; also give `DIRECTUS_URL` and `DIRECTUS_TOKEN` to the build (the token as a build secret), or the first build serves the bundled copy until the next revalidation.
+- `DATABASE_URL` is a runtime variable pointing at the Coolify Postgres resource's internal URL, using the read-only `portfolio_app` role; only the legacy project code in `src/utils/` uses it.
 - `SENTRY_AUTH_TOKEN` should be a Docker build secret, not a build variable, so it stays out of the deploy log and `docker history`.
 - **Include Source Commit in Build** must be on so Sentry source maps are uploaded under the deployed commit.
 
@@ -63,6 +64,22 @@ Build and run the image locally with:
 docker build -t portfolio .
 docker run -p 3000:3000 -e DATABASE_URL=... portfolio
 ```
+
+## Content (Directus)
+
+The content lives in `portfolio_*` collections on [cms.bjorntirsen.se](https://cms.bjorntirsen.se), in the **portfolio** folder. A Directus Flow calls `POST /api/revalidate` on every create, update or delete, so edits show up without a redeploy: the first visit after an edit gets the old page and triggers a rebuild in the background, later visits get the new one. As a safety net the page also revalidates every hour.
+
+[`scripts/directus-setup.mts`](scripts/directus-setup.mts) creates the collections, seeds them from `src/content/data.ts`, and creates a read-only `Portfolio reader` policy, a `Portfolio site` user whose token the app uses, and the revalidate Flow. It only adds what is missing, so it is safe to re-run after adding a field:
+
+```bash
+DIRECTUS_URL=https://cms.bjorntirsen.se \
+DIRECTUS_ADMIN_TOKEN=<static token of an admin user> \
+SITE_URL=https://www.bjorntirsen.se \
+REVALIDATE_SECRET=<same as in the app> \
+pnpm directus:setup
+```
+
+It prints the reader token on first run; set it as `DIRECTUS_TOKEN`. New fields need a matching change in [`src/content/directus.ts`](src/content/directus.ts).
 
 ## Database
 

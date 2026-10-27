@@ -273,22 +273,35 @@ export const experience: ExperienceEntry[] = [
 // were left out.
 export const projects: Project[] = [
   {
-    id: "portfolio-3",
+    id: "will-my-tokens-last",
     sort: 1,
-    label: "v3.0",
-    date: "2025-02",
+    label: "#01",
+    date: "2026-04",
     kind: "Solo",
-    title: "Portfolio 3.0",
+    title: "Will My Tokens Last?",
     description:
-      "The previous version of this site. Next.js and Supabase on my first custom domain, with Renovate and GitHub Actions keeping dependencies current.",
-    tags: ["Next.js", "Supabase", "GitHub Actions", "Renovate"],
-    repo_url: "https://github.com/bjorntirsen/portfolio/tree/v3.0",
-    live_url: null,
+      "Paces AI token usage across the working days left in the month, with Swedish holidays, custom days off and half-days, calendar views and Swedish/English UI.",
+    tags: ["React", "TypeScript", "Vite", "GitHub Actions"],
+    repo_url: "https://github.com/bjorntirsen/will-my-tokens-last",
+    live_url: "https://bjorntirsen.github.io/will-my-tokens-last/",
+  },
+  {
+    id: "bt-auth",
+    sort: 2,
+    label: "#02",
+    date: "2026-06",
+    kind: "Solo",
+    title: "bt-auth",
+    description:
+      "Work in progress: an identity provider built by hand to learn OAuth and OIDC from the ground up. React client and Express BFF in front of a Spring Boot authorization server.",
+    tags: ["React", "Express", "Spring Boot", "Docker"],
+    repo_url: "https://github.com/bjorntirsen/bt-auth",
+    live_url: "https://auth.bjorntirsen.se/",
   },
   {
     id: "couples-expenses",
-    sort: 2,
-    label: "#02",
+    sort: 3,
+    label: "#03",
     date: "2021-11",
     kind: "Solo",
     title: "Couples Expenses",
@@ -297,19 +310,6 @@ export const projects: Project[] = [
     tags: ["TypeScript", "Next.js", "Responsive"],
     repo_url: "https://github.com/bjorntirsen/couples-expenses",
     live_url: null,
-  },
-  {
-    id: "markdown-reminders",
-    sort: 3,
-    label: "#03",
-    date: "2021-11",
-    kind: "Group",
-    title: "Markdown Reminders",
-    description:
-      "A MERN to-do app where every reminder is written in Markdown. Built with a team.",
-    tags: ["MongoDB", "Express", "React", "Node.js"],
-    repo_url: "https://github.com/saraavvi/todo-react-frontend",
-    live_url: "https://mern-sara-todo.netlify.app/",
   },
   {
     id: "cats-and-dogs",
@@ -345,6 +345,20 @@ type ArchiveRow = [
 // Links are only rendered when a URL is set.
 const archiveRows: ArchiveRow[] = [
   [
+    "2025-02-01",
+    "Portfolio 3.0",
+    "Previous version of this site. Next.js and Supabase, with Renovate and GitHub Actions.",
+    "Solo",
+    { repo: "https://github.com/bjorntirsen/portfolio/tree/v3.0" },
+  ],
+  [
+    "2021-11-25",
+    "Markdown Reminders",
+    "MERN to-do app where every reminder is written in Markdown.",
+    "Group",
+    { repo: "https://github.com/saraavvi/todo-react-frontend" },
+  ],
+  [
     "2021-09-20",
     "Developing the Developer 2.0",
     "Previous portfolio. Create React App, REST API, CSS modules, Bootstrap.",
@@ -354,45 +368,6 @@ const archiveRows: ArchiveRow[] = [
       live: "https://bjorntirsen-portfolio.netlify.app",
       lessons: [
         "It was fun to make my first front end for my new portfolio API. With this, I can update my portfolio very quickly.",
-      ],
-    },
-  ],
-  [
-    "2021-09-10",
-    "Portfolio API",
-    "Express + MongoDB REST API and CMS with a Bootstrap admin.",
-    "Solo",
-    {
-      lessons: [
-        "I developed this app in order to separate the content from the frontend of my portfolio. This way I can quickly update my portfolio with content, as well as trying out different portfolio designs.",
-        "It’s a Node/Express/MongoDB app using EJS templating with a very high level of complexity. Project images are uploaded to Cloudinary.",
-        "The architecture is heavily inspired by the Natours project in this Udemy course: https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/",
-      ],
-    },
-  ],
-  [
-    "2021-07-16",
-    "Natours",
-    "Node.js app with maps, payments and photo uploads.",
-    "Course",
-    {
-      repo: "https://github.com/bjorntirsen/natours",
-      lessons: [
-        "Huge project from a Udemy course. Including maps, payments, photo uploads, and much more...",
-        "Made with Node.js/Express/MongoDB/Pug/JWT/Stripe/Cloudinary/SendGrid/Mapbox and much more.",
-        "I really recommend this course for people who want to learn how to make fullstack apps: https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/",
-      ],
-    },
-  ],
-  [
-    "2021-06-26",
-    "MIB REST API",
-    "Node.js + MongoDB CRUD API for customer data.",
-    "Solo",
-    {
-      repo: "https://github.com/bjorntirsen/mib-crud-api",
-      lessons: [
-        "This project was inspired by the design of the Natours project. I wanted to make my own CRUDable REST API for my React frontend app MIB Customer Data.",
       ],
     },
   ],
@@ -410,52 +385,15 @@ const archiveRows: ArchiveRow[] = [
     },
   ],
   [
-    "2021-05-12",
-    "GitLab CI/CD",
-    "Pipeline that tests a Node.js app and builds a Docker image.",
-    "Solo",
-    {
-      lessons: [
-        "In this project we learned the basics of Docker, ESLint and Prettier.",
-        "We also learned the basics of writing both unit and integration tests with Husky and Mocha. In the end, we only made a fake deploy of the app.",
-      ],
-    },
-  ],
-  [
     "2021-05-10",
     "The Fakestore Creator",
-    "Paste a product REST API, get a generated store.",
+    "PHP: paste a product REST API, get a generated store. Grew out of my first PHP fakestore.",
     "Solo",
     {
       repo: "https://github.com/bjorntirsen/bjorns_fakestore_creator",
       lessons: [
         "I wanted to experiment a little with generating visual representations from a REST API. My plan was to let you customize how you could display the data.",
         "We’ll see if I’ll make an improved version in the future...",
-      ],
-    },
-  ],
-  [
-    "2021-05-05",
-    "Lego Fakestore API",
-    "PHP REST API with category and limit filters.",
-    "Solo",
-    {
-      repo: "https://github.com/bjorntirsen/fakelegostore_api",
-      lessons: [
-        "REST API with filter function built in PHP. You can filter by category and limit how many results you want. Like this: https://legofakestore-api.herokuapp.com/v2/?category=technic&show=2",
-      ],
-    },
-  ],
-  [
-    "2021-04-26",
-    "Björn’s Fakestore",
-    "First PHP app: a store generated from a REST API.",
-    "Solo",
-    {
-      repo: "https://github.com/bjorntirsen/bjorns_fakestore",
-      lessons: [
-        "My first PHP app. Simple “fake store” generated from a REST API provided to us.",
-        "Made using a theme from startbootstrap.com.",
       ],
     },
   ],
@@ -474,31 +412,9 @@ const archiveRows: ArchiveRow[] = [
     },
   ],
   [
-    "2021-02-11",
-    "Yahtzee MongoDB Data",
-    "MongoDB data model and queries.",
-    "Group",
-    {
-      repo: "https://github.com/bjorntirsen/yahtzee-mongo-db",
-      lessons: ["My first MongoDB database. Group project. Including queries."],
-    },
-  ],
-  [
-    "2021-02-04",
-    "Max Video DB",
-    "MySQL design with views and stored procedures.",
-    "Solo",
-    {
-      repo: "https://github.com/bjorntirsen/max-video-db",
-      lessons: [
-        "My first MySQL database. Including views, stored procedures, sample data and statistics.",
-      ],
-    },
-  ],
-  [
     "2021-01-17",
     "MIB Customer Data",
-    "React customer data app. Responsive.",
+    "React customer data app, later backed by my own Node.js + MongoDB CRUD API. Responsive.",
     "Solo",
     {
       repo: "https://github.com/bjorntirsen/MIB-customer-data",
@@ -530,7 +446,7 @@ const archiveRows: ArchiveRow[] = [
     "First portfolio. Retired.",
     "Solo",
     {
-      repo: "https://github.com/bjorntirsen/bjorntirsen.github.io",
+      repo: "https://github.com/bjorntirsen/portfolio-1",
       lessons: [
         "I started the site by using Bootstrap 5 Alpha and customized the classes a bit as well as adding my own color palette. As you can see it’s autumn themed.",
         "But because the project required us to show we can use grid and flexbox I used that for the main layout of the page instead of Bootstrap’s classes.",

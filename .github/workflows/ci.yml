@@ -148,6 +148,10 @@ jobs:
     if: github.event_name == 'push'
     needs: [validate-renovate, lint, typecheck, test, coverage, db, docker]
     runs-on: ubuntu-latest
+    # Deploy secrets live in this environment, which only master may use, so
+    # PR CI (including Renovate branches running dependency installs) never
+    # sees them.
+    environment: production
     permissions:
       contents: read
       packages: write

@@ -56,7 +56,7 @@ The `deploy` job in [CI](.github/workflows/ci.yml) runs on pushes to `master` on
 - Coolify runs the app as a **Docker Image** resource on `ghcr.io/bjorntirsen/portfolio:latest`, with Auto Deploy off. Every image is also tagged with its commit, so rolling back means pointing Coolify at an older tag.
 - The homepage is statically generated and revalidated on demand. `DIRECTUS_URL`, `DIRECTUS_TOKEN` and `REVALIDATE_SECRET` are runtime variables on the Coolify resource. The build gets `DIRECTUS_URL` and `DIRECTUS_TOKEN` too (the token as a build secret), or the first build serves the bundled copy until the next revalidation.
 - `DATABASE_URL` is a runtime variable pointing at the Coolify Postgres resource's internal URL, using the read-only `portfolio_app` role; only the legacy project code in `src/utils/` uses it.
-- Repository secrets: `SENTRY_AUTH_TOKEN` (source map upload) and `DIRECTUS_TOKEN`, both passed as build secrets so they stay out of the log and `docker history`; `COOLIFY_WEBHOOK` (the resource's deploy webhook URL) and `COOLIFY_TOKEN` (a Coolify API token allowed to deploy). Repository variable: `DIRECTUS_URL`. Without the Coolify secrets the workflow still publishes the image but deploys nothing.
+- Secrets, in the GitHub `production` environment (deployable from `master` only, so PR CI never sees them): `SENTRY_AUTH_TOKEN` (source map upload) and `DIRECTUS_TOKEN`, both passed as build secrets so they stay out of the log and `docker history`; `COOLIFY_WEBHOOK` (the resource's deploy webhook URL) and `COOLIFY_TOKEN` (a Coolify API token allowed to deploy). Environment variable: `DIRECTUS_URL`. Without the Coolify secrets the workflow still publishes the image but deploys nothing.
 
 Build and run the image locally with:
 

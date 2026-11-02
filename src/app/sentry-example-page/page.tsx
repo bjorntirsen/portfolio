@@ -25,6 +25,25 @@ export default function Page() {
     checkConnectivity().catch(() => setIsConnected(false))
   }, [])
 
+  async function throwSampleError() {
+    Sentry.logger.info("User clicked the button, throwing a sample error")
+    await Sentry.startSpan(
+      {
+        name: "Example Frontend/Backend Span",
+        op: "test",
+      },
+      async () => {
+        const res = await fetch("/api/sentry-example-api")
+        if (!res.ok) {
+          setHasSentError(true)
+        }
+      },
+    )
+    throw new SentryExampleFrontendError(
+      "This error is raised on the frontend of the example page.",
+    )
+  }
+
   let status = <div className="success_placeholder" />
   if (hasSentError) {
     status = <p className="success">Error sent to Sentry.</p>
@@ -86,26 +105,9 @@ export default function Page() {
 
         <button
           type="button"
-          onClick={async () => {
-            Sentry.logger.info(
-              "User clicked the button, throwing a sample error",
-            )
-            await Sentry.startSpan(
-              {
-                name: "Example Frontend/Backend Span",
-                op: "test",
-              },
-              async () => {
-                const res = await fetch("/api/sentry-example-api")
-                if (!res.ok) {
-                  setHasSentError(true)
-                }
-              },
-            )
-            throw new SentryExampleFrontendError(
-              "This error is raised on the frontend of the example page.",
-            )
-          }}
+          // Not awaited or caught on purpose: the rejection must stay
+          // unhandled so Sentry's global handler reports it
+          onClick={() => void throwSampleError()}
           disabled={!isConnected}
         >
           <span>Throw Sample Error</span>

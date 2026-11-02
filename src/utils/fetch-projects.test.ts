@@ -27,7 +27,8 @@ test("fetchProjectsWithCoverImage splits out the cover image", async () => {
 
   const projects = await fetchProjectsWithCoverImage()
 
-  expect(sql.mock.calls[0][0].join("")).toContain("order by p.created_at desc")
+  const [strings] = sql.mock.calls[0] as [TemplateStringsArray]
+  expect(strings.join("")).toContain("order by p.created_at desc")
   expect(projects).toEqual([
     {
       id: "1",

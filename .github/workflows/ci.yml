@@ -9,9 +9,11 @@ on:
 permissions:
   contents: read
 
+# PR runs supersede each other. On master a newer push queues behind the
+# running one instead, so a deploy is never cancelled halfway through.
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 jobs:
   validate-renovate:

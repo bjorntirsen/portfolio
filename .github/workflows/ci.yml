@@ -176,8 +176,12 @@ jobs:
             ${{ env.IMAGE }}:${{ github.sha }}
             ${{ env.IMAGE }}:latest
           labels: org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
-          build-args: SENTRY_RELEASE=${{ github.sha }}
-          secrets: SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+          build-args: |
+            SENTRY_RELEASE=${{ github.sha }}
+            DIRECTUS_URL=${{ vars.DIRECTUS_URL }}
+          secrets: |
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+            DIRECTUS_TOKEN=${{ secrets.DIRECTUS_TOKEN }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
       # Skipped until the Coolify secrets exist, so the first image can be

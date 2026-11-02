@@ -29,8 +29,13 @@ COPY . .
 # .dockerignore excludes .git, so the Sentry plugin has no commit to derive a
 # release name from; the deploy workflow passes it as SENTRY_RELEASE.
 ARG SENTRY_RELEASE
+# The homepage is statically generated from Directus. Without these the build
+# still passes and serves the bundled copy until the first revalidation. The
+# token is a secret for the same reason as SENTRY_AUTH_TOKEN.
+ARG DIRECTUS_URL
 # Runs next directly, so this stage needs no pnpm of its own.
 RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN,env=SENTRY_AUTH_TOKEN \
+  --mount=type=secret,id=DIRECTUS_TOKEN,env=DIRECTUS_TOKEN \
   node_modules/.bin/next build
 
 FROM base AS runner

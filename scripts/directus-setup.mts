@@ -424,14 +424,16 @@ async function ensureCollections(existing: Set<string>) {
     await addMissingFields(SITE, siteFieldInputs)
   }
 
+  // Sequential on purpose (hence the NOSONARs): Directus schema changes race
+  // when run concurrently, and creation order sets each collection's sort.
   for (const [index, list] of lists.entries()) {
     const collection = listCollections[list.key]
     const fields = listFields(list.fields)
     if (existing.has(collection)) {
-      await addMissingFields(collection, fields)
+      await addMissingFields(collection, fields) // NOSONAR
       continue
     }
-    await client.request(
+    /* NOSONAR */ await client.request(
       createCollection({
         collection,
         meta: {
@@ -455,9 +457,11 @@ async function addMissingFields(collection: string, fields: FieldInput[]) {
       (field) => field.field,
     ),
   )
+  // Sequential on purpose (hence the NOSONAR): Directus schema changes race
+  // when run concurrently.
   for (const field of fields) {
     if (existing.has(field.field)) continue
-    await client.request(createField(collection, field))
+    await client.request(createField(collection, field)) // NOSONAR
     console.log(`Added ${collection}.${field.field}`)
   }
 }
@@ -469,13 +473,15 @@ async function seedContent() {
     console.log(`Seeded ${SITE}`)
   }
 
+  // Sequential on purpose (hence the NOSONARs): one collection at a time keeps
+  // Directus from racing and the log readable.
   for (const [key, collection] of Object.entries(listCollections)) {
-    const rows = await client.request(
+    /* NOSONAR */ const rows = await client.request(
       readItems(collection, { fields: ["id"], limit: 1 }),
     )
     if (rows.length > 0) continue
     const items = seed.lists[key as keyof DirectusLists]
-    await client.request(createItems(collection, items))
+    await client.request(createItems(collection, items)) // NOSONAR
     console.log(`Seeded ${collection} (${items.length} items)`)
   }
 }
@@ -614,10 +620,9 @@ async function readTokens(): Promise<{ dark: Tokens; light: Tokens }> {
     if (start === -1) throw new Error(`${selector} not found in globals.css`)
     const body = css.slice(start, css.indexOf("}", start))
     return Object.fromEntries(
-      [...body.matchAll(/--([\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [
-        name,
-        value.trim(),
-      ]),
+      [...body.matchAll(/--([\w-]+):\s*([^;\s][^;]*);/g)].map(
+        ([, name, value]) => [name, value.trim()],
+      ),
     )
   }
   const dark = block(":root")

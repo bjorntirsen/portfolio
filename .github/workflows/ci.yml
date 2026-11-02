@@ -25,7 +25,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - name: Validate renovate.json
-        run: npx --yes --package renovate -- renovate-config-validator renovate.json --strict
+        run: npx --yes --ignore-scripts --package renovate -- renovate-config-validator renovate.json --strict
 
   lint:
     runs-on: ubuntu-latest

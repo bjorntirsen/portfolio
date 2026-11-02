@@ -21,8 +21,24 @@ export default function Page() {
       const result = await Sentry.diagnoseSdkConnectivity()
       setIsConnected(result !== "sentry-unreachable")
     }
-    checkConnectivity()
+    // A failed check means Sentry can't be reached either
+    checkConnectivity().catch(() => setIsConnected(false))
   }, [])
+
+  let status = <div className="success_placeholder" />
+  if (hasSentError) {
+    status = <p className="success">Error sent to Sentry.</p>
+  } else if (!isConnected) {
+    status = (
+      <div className="connectivity-error">
+        <p>
+          It looks like network requests to Sentry are being blocked, which will
+          prevent errors from being captured. Try disabling your ad-blocker to
+          complete the test.
+        </p>
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -95,19 +111,7 @@ export default function Page() {
           <span>Throw Sample Error</span>
         </button>
 
-        {hasSentError ? (
-          <p className="success">Error sent to Sentry.</p>
-        ) : !isConnected ? (
-          <div className="connectivity-error">
-            <p>
-              It looks like network requests to Sentry are being blocked, which
-              will prevent errors from being captured. Try disabling your
-              ad-blocker to complete the test.
-            </p>
-          </div>
-        ) : (
-          <div className="success_placeholder" />
-        )}
+        {status}
 
         <div className="flex-spacer" />
       </main>

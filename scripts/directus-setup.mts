@@ -620,7 +620,7 @@ async function readTokens(): Promise<{ dark: Tokens; light: Tokens }> {
     if (start === -1) throw new Error(`${selector} not found in globals.css`)
     const body = css.slice(start, css.indexOf("}", start))
     return Object.fromEntries(
-      [...body.matchAll(/--([\w-]+):\s*([^;\s][^;]*);/g)].map(
+      [...body.matchAll(/--([\w-]+):([^;]*);/g)].map(
         ([, name, value]) => [name, value.trim()],
       ),
     )

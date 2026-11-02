@@ -53,6 +53,7 @@ pnpm dev
 
 The `deploy` job in [CI](.github/workflows/ci.yml) runs on pushes to `master` once every other job has passed: it builds the `Dockerfile` (Next.js `standalone` output), pushes it to `ghcr.io/bjorntirsen/portfolio`, and asks Coolify to deploy it. The VPS only pulls and runs the image; building there ran it out of memory.
 
+- `GET /api/version` returns `{"commit": "<sha>"}` from the running container (never cached), so it shows which build is live. The image's Docker `HEALTHCHECK` polls it, and Coolify shows that health status.
 - Coolify runs the app as a **Docker Image** resource on `ghcr.io/bjorntirsen/portfolio:latest`, with Auto Deploy off. Every image is also tagged with its commit, so rolling back means pointing Coolify at an older tag.
 - The homepage is statically generated and revalidated on demand. `DIRECTUS_URL`, `DIRECTUS_TOKEN` and `REVALIDATE_SECRET` are runtime variables on the Coolify resource. The build gets `DIRECTUS_URL` and `DIRECTUS_TOKEN` too (the token as a build secret), or the first build serves the bundled copy until the next revalidation.
 - `DATABASE_URL` is a runtime variable pointing at the Coolify Postgres resource's internal URL, using the read-only `portfolio_app` role; only the legacy project code in `src/utils/` uses it.

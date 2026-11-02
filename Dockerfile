@@ -49,9 +49,19 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# The commit this image was built from, served by /api/version. The deploy job
+# passes it as SENTRY_RELEASE; a local build reports "unknown".
+ARG SENTRY_RELEASE
+ENV COMMIT_SHA=${SENTRY_RELEASE}
+
 USER nextjs
 EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
+
+# The slim base has no curl or wget, so check with node itself. Coolify shows
+# the container's health from this.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+  CMD ["node", "-e", "fetch('http://127.0.0.1:3000/api/version').then(r => process.exit(r.ok ? 0 : 1), () => process.exit(1))"]
 
 CMD ["node", "server.js"]

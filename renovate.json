@@ -1,17 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>bjorntirsen/renovate-config"],
-  "packageRules": [
-    {
-      "description": "actions/setup-node is referenced by full semver tag; loose versioning keeps Renovate from misreading it",
-      "matchManagers": ["github-actions"],
-      "matchPackageNames": ["actions/setup-node"],
-      "versioning": "loose"
-    },
-    {
-      "description": "Mirrors the typescript peer range of typescript-eslint (via eslint-config-next). typescript-eslint only warns on an unsupported TypeScript, so CI would pass while its rules quietly degrade. Raise this ceiling only when typescript-eslint raises its own.",
-      "matchPackageNames": ["typescript"],
-      "allowedVersions": "<6.1.0"
-    }
+  "extends": [
+    "github>bjorntirsen/renovate-config",
+    "github>bjorntirsen/renovate-config:typescript-eslint"
   ]
 }

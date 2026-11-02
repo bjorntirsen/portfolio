@@ -195,5 +195,5 @@ jobs:
       - name: Trigger Coolify deployment
         if: env.COOLIFY_WEBHOOK != '' && env.COOLIFY_TOKEN != ''
         run: >-
-          curl --fail --silent --show-error --request POST "$COOLIFY_WEBHOOK"
+          curl --fail-with-body --silent --show-error --request POST "$COOLIFY_WEBHOOK"
           --header "Authorization: Bearer $COOLIFY_TOKEN"

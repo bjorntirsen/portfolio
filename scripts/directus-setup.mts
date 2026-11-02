@@ -618,13 +618,20 @@ async function readTokens(): Promise<{ dark: Tokens; light: Tokens }> {
   const block = (selector: string): Tokens => {
     const start = css.indexOf(`${selector} {`)
     if (start === -1) throw new Error(`${selector} not found in globals.css`)
-    const body = css.slice(start, css.indexOf("}", start))
-    return Object.fromEntries(
-      [...body.matchAll(/--([\w-]+):([^;]*);/g)].map(([, name, value]) => [
-        name,
-        value.trim(),
-      ]),
-    )
+    const body = css.slice(css.indexOf("{", start) + 1, css.indexOf("}", start))
+    // One `--name: value;` declaration per line. Plain string parsing rather
+    // than a regex, which Sonar flags for super-linear backtracking.
+    const tokens: Tokens = {}
+    for (const line of body.split("\n")) {
+      const declaration = line.trim()
+      const colon = declaration.indexOf(":")
+      if (!declaration.startsWith("--") || colon === -1) continue
+      const value = declaration.slice(colon + 1).trim()
+      tokens[declaration.slice(2, colon).trim()] = value.endsWith(";")
+        ? value.slice(0, -1).trim()
+        : value
+    }
+    return tokens
   }
   const dark = block(":root")
   // The light block only overrides some tokens, like the CSS cascade does

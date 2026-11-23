@@ -1,7 +1,7 @@
 # Local development database. Start it with `pnpm db:up`; see README.
 services:
   db:
-    image: postgres:18-alpine
+    image: postgres:19-alpine
     environment:
       POSTGRES_USER: portfolio
       POSTGRES_DB: portfolio
